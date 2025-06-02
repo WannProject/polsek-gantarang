@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Informasi Persuratan - Polsek Gantarang</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/favicon.ico" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img
+            src="assets/img/logo-polsek.png"
+            alt="Logo Polsek Gantarang"
+            height="60"
+          />
+          <div class="ms-3">
+            <div class="fw-bold fs-5">POLSEK GANTARANG</div>
+            <div class="small text-light">Kepolisian Sektor Gantarang</div>
+          </div>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#beranda">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tentang">Tentang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#layanan">Layanan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#alur">Alur Pengajuan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#kontak">Kontak</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="loginDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-person-circle me-1"></i> Login
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="loginDropdown"
+              >
+                <li>
+                  <a class="dropdown-item" href="login/login-masyarakat.html"
+                    >Masyarakat</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="login/login-admin.html"
+                    >Petugas Polsek</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="login/login-kapolsek.html"
+                    >Kapolsek</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section" id="beranda">
+      <!-- <div class="overlay"></div> -->
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-4 fw-bold">
+              Sistem Informasi Persuratan Online
+            </h1>
+            <p class="lead text-white">
+              Pelayanan publik yang cepat, mudah dan transparan untuk masyarakat
+              Kecamatan Gantarang
+            </p>
+            <div class="mt-4">
+              <a
+                href="register/register-masyarakat.html"
+                class="btn btn-primary btn-lg me-2"
+              >
+                <i class="bi bi-person-plus-fill me-2"></i>Daftar Sekarang
+              </a>
+              <a
+                href="login/login-masyarakat.html"
+                class="btn btn-outline-light btn-lg"
+              >
+                <i class="bi bi-box-arrow-in-right me-2"></i>Masuk
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6 d-none d-lg-block">
+            <img
+              src="assets/img/bg-1.png"
+              alt="Ilustrasi Sistem"
+              class="img-fluid"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-5" id="tentang">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="section-heading">Tentang Sistem</h2>
+            <hr class="divider my-4" />
+            <p class="lead">
+              Sistem Informasi Pengolahan Data Administrasi Persuratan Berbasis
+              Website pada Polsek Gantarang hadir untuk mempermudah proses
+              administrasi persuratan antara masyarakat dan kepolisian.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div
+                  class="feature-icon bg-primary text-white rounded-circle mb-3"
+                >
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <h4 class="card-title">Keamanan</h4>
+                <p class="card-text">
+                  Sistem keamanan berlapis menjamin kerahasiaan data persuratan
+                  Anda.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div
+                  class="feature-icon bg-primary text-white rounded-circle mb-3"
+                >
+                  <i class="bi bi-clock-history"></i>
+                </div>
+                <h4 class="card-title">Efisiensi</h4>
+                <p class="card-text">
+                  Hemat waktu dan tenaga dengan proses pengajuan surat secara
+                  online.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div
+                  class="feature-icon bg-primary text-white rounded-circle mb-3"
+                >
+                  <i class="bi bi-graph-up"></i>
+                </div>
+                <h4 class="card-title">Transparansi</h4>
+                <p class="card-text">
+                  Pantau status pengajuan surat Anda secara real-time kapan
+                  saja.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5 bg-light" id="layanan">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="section-heading">Layanan Kami</h2>
+            <hr class="divider my-4" />
+            <p class="lead">
+              Polsek Gantarang menyediakan berbagai layanan persuratan untuk
+              memenuhi kebutuhan masyarakat
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card service-card h-100">
+              <div class="card-body p-4">
+                <div class="service-icon bg-accent rounded mb-3">
+                  <i class="bi bi-people-fill"></i>
+                </div>
+                <h4 class="card-title">Surat Izin Keramaian</h4>
+                <p class="card-text">
+                  Pengurusan izin untuk kegiatan yang melibatkan banyak orang
+                  seperti pesta, konser, atau kegiatan sosial lainnya.
+                </p>
+                <a
+                  href="login/login-masyarakat.html"
+                  class="btn btn-sm btn-outline-primary mt-2"
+                  >Ajukan Sekarang</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card service-card h-100">
+              <div class="card-body p-4">
+                <div class="service-icon bg-accent rounded mb-3">
+                  <i class="bi bi-card-checklist"></i>
+                </div>
+                <h4 class="card-title">SKCK</h4>
+                <p class="card-text">
+                  Surat Keterangan Catatan Kepolisian yang diperlukan untuk
+                  berbagai keperluan seperti melamar pekerjaan atau melanjutkan
+                  pendidikan.
+                </p>
+                <a
+                  href="login/login-masyarakat.html"
+                  class="btn btn-sm btn-outline-primary mt-2"
+                  >Ajukan Sekarang</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card service-card h-100">
+              <div class="card-body p-4">
+                <div class="service-icon bg-accent rounded mb-3">
+                  <i class="bi bi-search"></i>
+                </div>
+                <h4 class="card-title">Surat Kehilangan</h4>
+                <p class="card-text">
+                  Pengurusan surat keterangan kehilangan barang atau dokumen
+                  penting sebagai bukti resmi dari kepolisian.
+                </p>
+                <a
+                  href="login/login-masyarakat.html"
+                  class="btn btn-sm btn-outline-primary mt-2"
+                  >Ajukan Sekarang</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-5" id="alur">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="section-heading">Alur Pengajuan Surat</h2>
+            <hr class="divider my-4" />
+            <p class="lead">
+              Ikuti langkah-langkah berikut untuk mengajukan surat secara online
+            </p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12">
+            <div class="process-timeline">
+              <div class="row g-0">
+                <div class="col-lg-3 col-md-6 process-step">
+                  <div class="process-number">1</div>
+                  <div class="process-content">
+                    <h5>Registrasi Akun</h5>
+                    <p>Daftar akun baru atau login jika sudah memiliki akun</p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 process-step">
+                  <div class="process-number">2</div>
+                  <div class="process-content">
+                    <h5>Isi Formulir</h5>
+                    <p>Lengkapi formulir dan unggah dokumen pendukung</p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 process-step">
+                  <div class="process-number">3</div>
+                  <div class="process-content">
+                    <h5>Verifikasi</h5>
+                    <p>Petugas akan memverifikasi permohonan Anda</p>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 process-step">
+                  <div class="process-number">4</div>
+                  <div class="process-content">
+                    <h5>Ambil Surat</h5>
+                    <p>Ambil surat di kantor atau unduh e-document</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12 text-center">
+            <a
+              href="register/register-masyarakat.html"
+              class="btn btn-primary btn-lg"
+            >
+              <i class="bi bi-file-earmark-text me-2"></i>Mulai Pengajuan
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="section-heading">Testimoni Masyarakat</h2>
+            <hr class="divider my-4" />
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                  <img
+                    src="assets/img/user-avatar.png"
+                    alt="Testimonial"
+                    class="rounded-circle testimonial-img"
+                  />
+                  <div class="ms-3">
+                    <h5 class="mb-0">Siti Nurhasila Arif</h5>
+                    <small class="text-muted">Wiraswasta</small>
+                  </div>
+                </div>
+                <p class="card-text">
+                  "Sangat membantu sekali adanya sistem online ini. Proses
+                  pengurusan SKCK menjadi lebih cepat dan tidak perlu antre
+                  panjang."
+                </p>
+                <div class="text-warning">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                  <img
+                    src="assets/img/user-avatar.png"
+                    alt="Testimonial"
+                    class="rounded-circle testimonial-img"
+                  />
+                  <div class="ms-3">
+                    <h5 class="mb-0">Siti Nurhasila Arif</h5>
+                    <small class="text-muted">Guru</small>
+                  </div>
+                </div>
+                <p class="card-text">
+                  "Pelayanan sangat baik dan profesional. Sistem online ini
+                  sangat memudahkan saya dalam mengurus surat kehilangan KTP."
+                </p>
+                <div class="text-warning">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                  <img
+                    src="assets/img/user-avatar.png"
+                    alt="Testimonial"
+                    class="rounded-circle testimonial-img"
+                  />
+                  <div class="ms-3">
+                    <h5 class="mb-0">Kurniawan</h5>
+                    <small class="text-muted">Programmer</small>
+                  </div>
+                </div>
+                <p class="card-text">
+                  "Proses pengurusan izin keramaian menjadi lebih transparan dan
+                  dapat dipantau statusnya. Sangat memuaskan!"
+                </p>
+                <div class="text-warning">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5" id="kontak">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="section-heading">Hubungi Kami</h2>
+            <hr class="divider my-4" />
+            <p class="lead mb-5">
+              Hubungi kami untuk informasi lebih lanjut mengenai layanan
+              persuratan Polsek Gantarang
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 ms-auto text-center mb-5 mb-lg-0">
+            <div class="contact-icon mb-3">
+              <i class="bi bi-phone"></i>
+            </div>
+            <div>+62 411 8888-777</div>
+          </div>
+          <div class="col-lg-4 me-auto text-center">
+            <div class="contact-icon mb-3">
+              <i class="bi bi-envelope"></i>
+            </div>
+            <a
+              class="text-decoration-none"
+              href="mailto:info@polsekgantarang.go.id"
+              >info@polsekgantarang.go.id</a
+            >
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12">
+            <div class="card border-0 shadow">
+              <div class="card-body p-0">
+                <div class="row g-0">
+                  <div class="col-lg-6">
+                    <div class="p-5">
+                      <h4 class="mb-4">Kirim Pesan</h4>
+                      <form>
+                        <div class="mb-3">
+                          <label for="name" class="form-label"
+                            >Nama Lengkap</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="email" class="form-label">Email</label>
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            required
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="message" class="form-label">Pesan</label>
+                          <textarea
+                            class="form-control"
+                            id="message"
+                            rows="4"
+                            required
+                          ></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                          Kirim Pesan
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 d-none d-lg-block">
+                    <div class="h-100 office-map">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3536.6779914812037!2d120.15998797441655!3d-5.565997694414519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbbffde5a4bbcc1%3A0x68ba3830e817c903!2sPolsek%20Gantarang!5e1!3m2!1sid!2sid!4v1748802319483!5m2!1sid!2sid"
+                        width="100%"
+                        height="100%"
+                        style="border: 0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-lg-start">
+            <div class="d-flex align-items-center mb-3">
+              <img
+                src="assets/img/logo-polsek.png"
+                alt="Logo Polsek Gantarang"
+                height="50"
+              />
+              <div class="ms-3 text-white">
+                <div class="fw-bold">POLSEK GANTARANG</div>
+                <div class="small">Kepolisian Sektor Gantarang</div>
+              </div>
+            </div>
+            <p class="text-white-50 small mb-4">
+              Jl. Poros Bulukumba, Kec. Gantarang<br />Kab. Bulukumba, Sulawesi
+              Selatan 92561
+            </p>
+          </div>
+          <div class="col-lg-4 text-lg-center">
+            <div class="footer-social">
+              <a class="btn btn-outline-light btn-social mx-1" href="#"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a class="btn btn-outline-light btn-social mx-1" href="#"
+                ><i class="bi bi-twitter"></i
+              ></a>
+              <a class="btn btn-outline-light btn-social mx-1" href="#"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a class="btn btn-outline-light btn-social mx-1" href="#"
+                ><i class="bi bi-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <p class="text-white-50 small mb-0">
+              &copy; 2025 Polsek Gantarang. All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

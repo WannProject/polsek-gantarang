@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengajuan Surat - Polsek Gantarang</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/img/favicon.ico" />
+  </head>
+  <body class="dashboard-page">
+    <div class="dashboard-wrapper">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+          <div class="d-flex align-items-center">
+            <img
+              src="../assets/img/logo-polsek.png"
+              alt="Logo Polsek Gantarang"
+              height="45"
+            />
+            <div class="ms-3">
+              <div class="fw-bold text-white">POLSEK GANTARANG</div>
+              <div class="small text-white-50">Sistem Persuratan</div>
+            </div>
+          </div>
+          <button
+            class="btn btn-link sidebar-close d-lg-none"
+            id="closeSidebar"
+          >
+            <i class="bi bi-x-lg text-white"></i>
+          </button>
+        </div>
+        <div class="sidebar-user">
+          <div class="user-info">
+            <img
+              src="../assets/img/user-avatar.png"
+              alt="User"
+              class="user-avatar"
+            />
+            <div class="user-details">
+              <div class="user-name text-white">Siti Nurhasisa Arif</div>
+              <div class="user-role text-white-50">Masyarakat</div>
+            </div>
+          </div>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">
+              <i class="bi bi-speedometer2"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a href="form-pengajuan.html" class="nav-link">
+              <i class="bi bi-file-earmark-plus"></i>
+              <span>Pengajuan Surat</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="status-surat.html" class="nav-link">
+              <i class="bi bi-hourglass-split"></i>
+              <span>Status Pengajuan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="detail-surat.html" class="nav-link">
+              <i class="bi bi-file-earmark-check"></i>
+              <span>Surat Selesai</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="#profileSubmenu"
+              data-bs-toggle="collapse"
+              class="nav-link collapsed"
+            >
+              <i class="bi bi-person"></i>
+              <span>Profil</span>
+              <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul class="collapse" id="profileSubmenu">
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-person-gear"></i>
+                  <span>Edit Profil</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-key"></i>
+                  <span>Ubah Password</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item mt-3">
+            <a href="../index.html" class="nav-link">
+              <i class="bi bi-box-arrow-left"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <nav
+          class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow-sm"
+        >
+          <div class="container-fluid">
+            <button class="btn btn-link d-lg-none" id="openSidebar">
+              <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex align-items-center">
+              <h4 class="mb-0 text-primary fw-bold d-none d-sm-block">
+                Pengajuan Surat
+              </h4>
+              <h5 class="mb-0 text-primary fw-bold d-block d-sm-none">
+                Pengajuan
+              </h5>
+            </div>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="notificationsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell"></i>
+                  <span class="badge bg-danger badge-counter">3</span>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-end shadow"
+                  aria-labelledby="notificationsDropdown"
+                >
+                  <h6 class="dropdown-header">Notifikasi</h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-primary text-white">
+                      <i class="bi bi-check-circle"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">20 Juni 2025</div>
+                      <span>Pengajuan SKCK Anda telah disetujui</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-success text-white">
+                      <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">18 Juni 2025</div>
+                      <span>Surat kehilangan siap diambil</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-warning text-white">
+                      <i class="bi bi-exclamation-triangle"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">15 Juni 2025</div>
+                      <span>Dokumen pendukung perlu diperbaiki</span>
+                    </div>
+                  </a>
+                  <a
+                    class="dropdown-item text-center small text-gray-500"
+                    href="#"
+                    >Tampilkan semua notifikasi</a
+                  >
+                </div>
+              </li>
+              <div class="topbar-divider d-none d-sm-block"></div>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="userDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span class="d-none d-lg-inline text-gray-600 me-2"
+                    >Siti Nurhasisa Arif</span
+                  >
+                  <img
+                    class="img-profile rounded-circle"
+                    src="../assets/img/user-avatar.png"
+                    width="32"
+                    height="32"
+                  />
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-end shadow"
+                  aria-labelledby="userDropdown"
+                >
+                  <a class="dropdown-item" href="#">
+                    <i class="bi bi-person-fill me-2 text-gray-400"></i>
+                    Profil
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="bi bi-gear-fill me-2 text-gray-400"></i>
+                    Pengaturan
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="../index.html">
+                    <i class="bi bi-box-arrow-right me-2 text-gray-400"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container-fluid">
+          <!-- Page Heading -->
+          <div
+            class="d-sm-flex align-items-center justify-content-between mb-4"
+          >
+            <h1 class="h3 mb-0 text-gray-800">Formulir Pengajuan Surat</h1>
+          </div>
+
+          <!-- Letter Type Selection -->
+          <div class="card mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 fw-bold text-primary">Pilih Jenis Surat</h6>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card letter-type-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                      <div class="letter-type-icon mb-3">
+                        <i class="bi bi-card-checklist"></i>
+                      </div>
+                      <h5 class="card-title">SKCK</h5>
+                      <p class="card-text">
+                        Surat Keterangan Catatan Kepolisian untuk keperluan
+                        pekerjaan, beasiswa, atau lainnya.
+                      </p>
+                      <a
+                        href="#"
+                        class="btn btn-primary w-100"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#skckForm"
+                        aria-expanded="false"
+                        aria-controls="skckForm"
+                      >
+                        Pilih
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card letter-type-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                      <div class="letter-type-icon mb-3">
+                        <i class="bi bi-search"></i>
+                      </div>
+                      <h5 class="card-title">Surat Kehilangan</h5>
+                      <p class="card-text">
+                        Surat keterangan kehilangan barang atau dokumen penting
+                        sebagai bukti resmi.
+                      </p>
+                      <a
+                        href="#"
+                        class="btn btn-primary w-100"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#lostDocForm"
+                        aria-expanded="false"
+                        aria-controls="lostDocForm"
+                      >
+                        Pilih
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card letter-type-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                      <div class="letter-type-icon mb-3">
+                        <i class="bi bi-people-fill"></i>
+                      </div>
+                      <h5 class="card-title">Izin Keramaian</h5>
+                      <p class="card-text">
+                        Surat izin untuk mengadakan acara atau kegiatan yang
+                        melibatkan banyak orang.
+                      </p>
+                      <a
+                        href="#"
+                        class="btn btn-primary w-100"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#crowdPermitForm"
+                        aria-expanded="false"
+                        aria-controls="crowdPermitForm"
+                      >
+                        Pilih
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SKCK Form -->
+          <div class="collapse mb-4" id="skckForm">
+            <div class="card">
+              <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+              >
+                <h6 class="m-0 fw-bold text-primary">
+                  Formulir Pengajuan SKCK
+                </h6>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#skckForm"
+                  aria-expanded="false"
+                  aria-controls="skckForm"
+                ></button>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="mb-4">
+                    <h5 class="mb-3">Data Pemohon</h5>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="skckName" class="form-label"
+                          >Nama Lengkap
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="skckName"
+                          value="Siti Nurhasisa Arif"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="skckNik" class="form-label"
+                          >NIK <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="skckNik"
+                          value="1234567890123456"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="skckPob" class="form-label"
+                          >Tempat Lahir
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="skckPob"
+                          value="Bulukumba"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="skckDob" class="form-label"
+                          >Tanggal Lahir
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="skckDob"
+                          value="1990-05-15"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="skckGender" class="form-label"
+                          >Jenis Kelamin
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="skckGender"
+                          value="Laki-laki"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="skckAddress" class="form-label"
+                          >Alamat <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="skckAddress"
+                          value="Jl. Pahlawan No. 123, Gantarang"
+                          disabled
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <h5 class="mb-3">Keperluan SKCK</h5>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="skckPurpose" class="form-label"
+                          >Keperluan <span class="text-danger">*</span></label
+                        >
+                        <select class="form-select" id="skckPurpose" required>
+                          <option value="" selected disabled>
+                            Pilih keperluan
+                          </option>
+                          <option value="job">Melamar Pekerjaan</option>
+                          <option value="education">
+                            Melanjutkan Pendidikan
+                          </option>
+                          <option value="business">Mengurus Izin Usaha</option>
+                          <option value="other">Lainnya</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="skckOtherPurpose" class="form-label"
+                          >Keperluan Lainnya</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="skckOtherPurpose"
+                          placeholder="Sebutkan keperluan lainnya"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <h5 class="mb-3">Dokumen Pendukung</h5>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="skckKtp" class="form-label"
+                          >Scan KTP <span class="text-danger">*</span></label
+                        >
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="skckKtp"
+                          required
+                        />
+                        <div class="form-text">
+                          Format file: JPG, PNG, atau PDF. Ukuran maksimal 2MB
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="skckKk" class="form-label"
+                          >Scan Kartu Keluarga
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="skckKk"
+                          required
+                        />
+                        <div class="form-text">
+                          Format file: JPG, PNG, atau PDF. Ukuran maksimal 2MB
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="skckPhoto" class="form-label"
+                          >Pas Foto Berwarna 4x6
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="skckPhoto"
+                          required
+                        />
+                        <div class="form-text">
+                          Format file: JPG atau PNG. Ukuran maksimal 1MB
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="skckRtRw" class="form-label"
+                          >Surat Pengantar RT/RW
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="skckRtRw"
+                          required
+                        />
+                        <div class="form-text">
+                          Format file: JPG, PNG, atau PDF. Ukuran maksimal 2MB
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="skckAgree"
+                        required
+                      />
+                      <label class="form-check-label" for="skckAgree">
+                        Saya menyatakan bahwa informasi yang diisi adalah benar
+                        dan dapat dipertanggungjawabkan
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary me-md-2"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#skckForm"
+                      aria-expanded="false"
+                      aria-controls="skckForm"
+                    >
+                      Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Ajukan Permohonan
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lost Document Form -->
+          <div class="collapse mb-4" id="lostDocForm">
+            <div class="card">
+              <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+              >
+                <h6 class="m-0 fw-bold text-primary">
+                  Formulir Surat Kehilangan
+                </h6>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#lostDocForm"
+                  aria-expanded="false"
+                  aria-controls="lostDocForm"
+                ></button>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="mb-4">
+                    <h5 class="mb-3">Data Pemohon</h5>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="lostName" class="form-label"
+                          >Nama Lengkap
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lostName"
+                          value="Siti Nurhasisa Arif"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="lostNik" class="form-label"
+                          >NIK <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lostNik"
+                          value="1234567890123456"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="lostPhone" class="form-label"
+                          >Nomor HP <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lostPhone"
+                          value="08123456789"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="lostAddress" class="form-label"
+                          >Alamat <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lostAddress"
+                          value="Jl. Pahlawan No. 123, Gantarang"
+                          disabled
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <h5 class="mb-3">Detail Kehilangan</h5>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="lostItemType" class="form-label"
+                          >Jenis Barang/Dokumen yang Hilang
+                          <span class="text-danger">*</span></label
+                        >
+                        <select class="form-select" id="lostItemType" required>
+                          <option value="" selected disabled>
+                            Pilih jenis
+                          </option>
+                          <option value="ktp">KTP</option>
+                          <option value="sim">SIM</option>
+                          <option value="passport">Paspor</option>
+                          <option value="ijazah">Ijazah</option>
+                          <option value="stnk">STNK</option>
+                          <option value="bpkb">BPKB</option>
+                          <option value="other">Lainnya</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="lostItemName" class="form-label"
+                          >Nama Barang/Dokumen
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lostItemName"
+                          placeholder="Masukkan nama barang/dokumen"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="lostDate" class="form-label"
+                          >Tanggal Kehilangan
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="lostDate"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="lostLocation" class="form-label"
+                          >Lokasi Kehilangan
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lostLocation"
+                          placeholder="Lokasi terakhir barang/dokumen"
+                          required
+                        />
+                      </div>
+                      <div class="col-12 mb-3">
+                        <label for="lostDescription" class="form-label"
+                          >Kronologi Kehilangan
+                          <span class="text-danger">*</span></label
+                        >
+                        <textarea
+                          class="form-control"
+                          id="lostDescription"
+                          rows="3"
+                          placeholder="Jelaskan kronologi kejadian kehilangan"
+                          required
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <h5 class="mb-3">Dokumen Pendukung</h5>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="lostKtp" class="form-label"
+                          >Scan KTP <span class="text-danger">*</span></label
+                        >
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="lostKtp"
+                          required
+                        />
+                        <div class="form-text">
+                          Format file: JPG, PNG, atau PDF. Ukuran maksimal 2MB
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="lostDocCopy" class="form-label"
+                          >Fotokopi Dokumen yang Hilang (jika ada)</label
+                        >
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="lostDocCopy"
+                        />
+                        <div class="form-text">
+                          Format file: JPG, PNG, atau PDF. Ukuran maksimal 2MB
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="lostAgree"
+                        required
+                      />
+                      <label class="form-check-label" for="lostAgree">
+                        Saya menyatakan bahwa informasi yang diisi adalah benar
+                        dan dapat dipertanggungjawabkan
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary me-md-2"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#lostDocForm"
+                      aria-expanded="false"
+                      aria-controls="lostDocForm"
+                    >
+                      Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Ajukan Permohonan
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Crowd Permit Form -->
+          <div class="collapse mb-4" id="crowdPermitForm">
+            <div class="card">
+              <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+              >
+                <h6 class="m-0 fw-bold text-primary">
+                  Formulir Izin Keramaian
+                </h6>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#crowdPermitForm"
+                  aria-expanded="false"
+                  aria-controls="crowdPermitForm"
+                ></button>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="mb-4">
+                    <h5 class="mb-3">Data Pemohon</h5>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="permitName" class="form-label"
+                          >Nama Lengkap
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="permitName"
+                          value="Siti Nurhasisa Arif"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="permitNik" class="form-label"
+                          >NIK <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="permitNik"
+                          value="1234567890123456"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="permitPhone" class="form-label"
+                          >Nomor HP <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="permitPhone"
+                          value="08123456789"
+                          disabled
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="permitAddress" class="form-label"
+                          >Alamat <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="permitAddress"
+                          value="Jl. Pahlawan No. 123, Gantarang"
+                          disabled
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <h5 class="mb-3">Detail Kegiatan</h5>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="eventName" class="form-label"
+                          >Nama Kegiatan
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="eventName"
+                          placeholder="Masukkan nama kegiatan"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="eventType" class="form-label"
+                          >Jenis Kegiatan
+                          <span class="text-danger">*</span></label
+                        >
+                        <select class="form-select" id="eventType" required>
+                          <option value="" selected disabled>
+                            Pilih jenis kegiatan
+                          </option>
+                          <option value="wedding">Pernikahan</option>
+                          <option value="music">Pentas Musik</option>
+                          <option value="religious">Kegiatan Keagamaan</option>
+                          <option value="bazaar">Bazar/Pasar</option>
+                          <option value="other">Lainnya</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="eventDate" class="form-label"
+                          >Tanggal Mulai
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="eventDate"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="eventEndDate" class="form-label"
+                          >Tanggal Selesai
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="date"
+                          class="form-control"
+                          id="eventEndDate"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="eventTime" class="form-label"
+                          >Waktu Mulai <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="time"
+                          class="form-control"
+                          id="eventTime"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="eventEndTime" class="form-label"
+                          >Waktu Selesai
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="time"
+                          class="form-control"
+                          id="eventEndTime"
+                          required
+                        />
+                      </div>
+                      <div class="col-12 mb-3">
+                        <label for="eventVenue" class="form-label"
+                          >Tempat/Lokasi
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="eventVenue"
+                          placeholder="Alamat lengkap lokasi kegiatan"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="eventAttendees" class="form-label"
+                          >Perkiraan Jumlah Peserta
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="eventAttendees"
+                          placeholder="Jumlah peserta"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="eventPIC" class="form-label"
+                          >Penanggung Jawab
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="eventPIC"
+                          placeholder="Nama penanggung jawab"
+                          required
+                        />
+                      </div>
+                      <div class="col-12 mb-3">
+                        <label for="eventDescription" class="form-label"
+                          >Deskripsi Kegiatan
+                          <span class="text-danger">*</span></label
+                        >
+                        <textarea
+                          class="form-control"
+                          id="eventDescription"
+                          rows="3"
+                          placeholder="Jelaskan detail kegiatan yang akan dilaksanakan"
+                          required
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <h5 class="mb-3">Dokumen Pendukung</h5>
+                    <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="eventKtp" class="form-label"
+                          >Scan KTP Penanggung Jawab
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="eventKtp"
+                          required
+                        />
+                        <div class="form-text">
+                          Format file: JPG, PNG, atau PDF. Ukuran maksimal 2MB
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="eventLetter" class="form-label"
+                          >Surat Permohonan
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="eventLetter"
+                          required
+                        />
+                        <div class="form-text">
+                          Format file: PDF. Ukuran maksimal 2MB
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="eventRtRw" class="form-label"
+                          >Surat Persetujuan RT/RW
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="eventRtRw"
+                          required
+                        />
+                        <div class="form-text">
+                          Format file: JPG, PNG, atau PDF. Ukuran maksimal 2MB
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="eventLayout" class="form-label"
+                          >Denah Lokasi Kegiatan
+                          <span class="text-danger">*</span></label
+                        >
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="eventLayout"
+                          required
+                        />
+                        <div class="form-text">
+                          Format file: JPG, PNG, atau PDF. Ukuran maksimal 2MB
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="eventAgree"
+                        required
+                      />
+                      <label class="form-check-label" for="eventAgree">
+                        Saya menyatakan bahwa informasi yang diisi adalah benar
+                        dan bertanggung jawab atas kegiatan yang akan
+                        dilaksanakan
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary me-md-2"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#crowdPermitForm"
+                      aria-expanded="false"
+                      aria-controls="crowdPermitForm"
+                    >
+                      Batal
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      Ajukan Permohonan
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Previous Applications -->
+          <div class="card mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 fw-bold text-primary">Riwayat Pengajuan</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>No. Pengajuan</th>
+                      <th>Jenis Surat</th>
+                      <th>Tanggal Pengajuan</th>
+                      <th>Status</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>SRT-2025060001</td>
+                      <td>SKCK</td>
+                      <td>20 Juni 2025</td>
+                      <td><span class="badge bg-success">Disetujui</span></td>
+                      <td>
+                        <a href="detail-surat.html" class="btn btn-sm btn-info">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>SRT-2025060002</td>
+                      <td>Surat Kehilangan</td>
+                      <td>18 Juni 2025</td>
+                      <td><span class="badge bg-success">Disetujui</span></td>
+                      <td>
+                        <a href="detail-surat.html" class="btn btn-sm btn-info">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>SRT-2025060003</td>
+                      <td>Izin Keramaian</td>
+                      <td>15 Juni 2025</td>
+                      <td>
+                        <span class="badge bg-warning text-dark"
+                          >Dalam Proses</span
+                        >
+                      </td>
+                      <td>
+                        <a href="detail-surat.html" class="btn btn-sm btn-info">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto py-3 bg-white">
+          <div class="container-fluid">
+            <div class="text-center">
+              <span class="text-muted"
+                >&copy; 2025 Polsek Gantarang. All Rights Reserved.</span
+              >
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

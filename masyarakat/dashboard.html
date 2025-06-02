@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Masyarakat - Polsek Gantarang</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/img/favicon.ico" />
+  </head>
+  <body class="dashboard-page">
+    <div class="dashboard-wrapper">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+          <div class="d-flex align-items-center">
+            <img
+              src="../assets/img/logo-polsek.png"
+              alt="Logo Polsek Gantarang"
+              height="45"
+            />
+            <div class="ms-3">
+              <div class="fw-bold text-white">POLSEK GANTARANG</div>
+              <div class="small text-white-50">Sistem Persuratan</div>
+            </div>
+          </div>
+          <button
+            class="btn btn-link sidebar-close d-lg-none"
+            id="closeSidebar"
+          >
+            <i class="bi bi-x-lg text-white"></i>
+          </button>
+        </div>
+        <div class="sidebar-user">
+          <div class="user-info">
+            <img
+              src="../assets/img/user-avatar.png"
+              alt="User"
+              class="user-avatar"
+            />
+            <div class="user-details">
+              <div class="user-name text-white">Siti Nurhasisa Arif</div>
+              <div class="user-role text-white-50">Masyarakat</div>
+            </div>
+          </div>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="nav-item active">
+            <a href="dashboard.html" class="nav-link">
+              <i class="bi bi-speedometer2"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="form-pengajuan.html" class="nav-link">
+              <i class="bi bi-file-earmark-plus"></i>
+              <span>Pengajuan Surat</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="status-surat.html" class="nav-link">
+              <i class="bi bi-hourglass-split"></i>
+              <span>Status Pengajuan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="detail-surat.html" class="nav-link">
+              <i class="bi bi-file-earmark-check"></i>
+              <span>Surat Selesai</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="#profileSubmenu"
+              data-bs-toggle="collapse"
+              class="nav-link collapsed"
+            >
+              <i class="bi bi-person"></i>
+              <span>Profil</span>
+              <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul class="collapse" id="profileSubmenu">
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-person-gear"></i>
+                  <span>Edit Profil</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-key"></i>
+                  <span>Ubah Password</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item mt-3">
+            <a href="../index.html" class="nav-link">
+              <i class="bi bi-box-arrow-left"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <nav
+          class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow-sm"
+        >
+          <div class="container-fluid">
+            <button class="btn btn-link d-lg-none" id="openSidebar">
+              <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex align-items-center">
+              <h4 class="mb-0 text-primary fw-bold d-none d-sm-block">
+                Dashboard Masyarakat
+              </h4>
+              <h5 class="mb-0 text-primary fw-bold d-block d-sm-none">
+                Dashboard
+              </h5>
+            </div>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="notificationsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell"></i>
+                  <span class="badge bg-danger badge-counter">3</span>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-end shadow"
+                  aria-labelledby="notificationsDropdown"
+                >
+                  <h6 class="dropdown-header">Notifikasi</h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-primary text-white">
+                      <i class="bi bi-check-circle"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">20 Juni 2025</div>
+                      <span>Pengajuan SKCK Anda telah disetujui</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-success text-white">
+                      <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">18 Juni 2025</div>
+                      <span>Surat kehilangan siap diambil</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-warning text-white">
+                      <i class="bi bi-exclamation-triangle"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">15 Juni 2025</div>
+                      <span>Dokumen pendukung perlu diperbaiki</span>
+                    </div>
+                  </a>
+                  <a
+                    class="dropdown-item text-center small text-gray-500"
+                    href="#"
+                    >Tampilkan semua notifikasi</a
+                  >
+                </div>
+              </li>
+              <div class="topbar-divider d-none d-sm-block"></div>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="userDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span class="d-none d-lg-inline text-gray-600 me-2"
+                    >Siti Nurhasisa Arif</span
+                  >
+                  <img
+                    class="img-profile rounded-circle"
+                    src="../assets/img/user-avatar.png"
+                    width="32"
+                    height="32"
+                  />
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-end shadow"
+                  aria-labelledby="userDropdown"
+                >
+                  <a class="dropdown-item" href="#">
+                    <i class="bi bi-person-fill me-2 text-gray-400"></i>
+                    Profil
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="bi bi-gear-fill me-2 text-gray-400"></i>
+                    Pengaturan
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="../index.html">
+                    <i class="bi bi-box-arrow-right me-2 text-gray-400"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container-fluid">
+          <!-- Welcome Card -->
+          <div class="card welcome-card mb-4">
+            <div class="card-body p-4">
+              <div class="row align-items-center">
+                <div class="col-md-7">
+                  <h2 class="fw-bold mb-3">Selamat Datang, Sisi!</h2>
+                  <p class="mb-4">
+                    Selamat datang di Sistem Informasi Persuratan Online Polsek
+                    Gantarang. Anda dapat mengajukan permohonan surat dan
+                    memantau status pengajuan Anda disini.
+                  </p>
+                  <a href="form-pengajuan.html" class="btn btn-primary me-2">
+                    <i class="bi bi-file-earmark-plus me-2"></i>Ajukan Surat
+                    Baru
+                  </a>
+                  <a href="status-surat.html" class="btn btn-outline-primary">
+                    <i class="bi bi-hourglass-split me-2"></i>Cek Status
+                  </a>
+                </div>
+                <div class="col-md-5 d-none d-md-block">
+                  <img
+                    src="../assets/img/welcome-illustration.png"
+                    alt="Welcome"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats Cards -->
+          <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-primary h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div
+                        class="text-xs fw-bold text-primary text-uppercase mb-1"
+                      >
+                        Total Pengajuan
+                      </div>
+                      <div class="h5 mb-0 fw-bold text-gray-800">6</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="bi bi-file-earmark-text text-gray-300 fs-1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-success h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div
+                        class="text-xs fw-bold text-success text-uppercase mb-1"
+                      >
+                        Disetujui
+                      </div>
+                      <div class="h5 mb-0 fw-bold text-gray-800">4</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="bi bi-check-circle text-gray-300 fs-1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-warning h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div
+                        class="text-xs fw-bold text-warning text-uppercase mb-1"
+                      >
+                        Dalam Proses
+                      </div>
+                      <div class="h5 mb-0 fw-bold text-gray-800">1</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="bi bi-clock-history text-gray-300 fs-1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-danger h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div
+                        class="text-xs fw-bold text-danger text-uppercase mb-1"
+                      >
+                        Ditolak
+                      </div>
+                      <div class="h5 mb-0 fw-bold text-gray-800">1</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="bi bi-x-circle text-gray-300 fs-1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Applications -->
+          <div class="card mb-4">
+            <div
+              class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+            >
+              <h6 class="m-0 fw-bold text-primary">Pengajuan Surat Terbaru</h6>
+              <a href="status-surat.html" class="btn btn-sm btn-primary">
+                Lihat Semua
+              </a>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>No. Pengajuan</th>
+                      <th>Jenis Surat</th>
+                      <th>Tanggal Pengajuan</th>
+                      <th>Status</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>SRT-2025060001</td>
+                      <td>SKCK</td>
+                      <td>20 Juni 2025</td>
+                      <td><span class="badge bg-success">Disetujui</span></td>
+                      <td>
+                        <a href="detail-surat.html" class="btn btn-sm btn-info">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>SRT-2025060002</td>
+                      <td>Surat Kehilangan</td>
+                      <td>18 Juni 2025</td>
+                      <td><span class="badge bg-success">Disetujui</span></td>
+                      <td>
+                        <a href="detail-surat.html" class="btn btn-sm btn-info">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>SRT-2025060003</td>
+                      <td>Izin Keramaian</td>
+                      <td>15 Juni 2025</td>
+                      <td>
+                        <span class="badge bg-warning text-dark"
+                          >Dalam Proses</span
+                        >
+                      </td>
+                      <td>
+                        <a href="detail-surat.html" class="btn btn-sm btn-info">
+                          <i class="bi bi-eye"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Information Cards -->
+          <div class="row">
+            <div class="col-lg-6 mb-4">
+              <!-- Announcements -->
+              <div class="card h-100">
+                <div class="card-header py-3">
+                  <h6 class="m-0 fw-bold text-primary">Pengumuman</h6>
+                </div>
+                <div class="card-body">
+                  <div class="announcement-item mb-3 pb-3 border-bottom">
+                    <h6 class="fw-bold">Jam Pelayanan Selama Hari Raya</h6>
+                    <p class="small text-muted mb-2">20 Juni 2025</p>
+                    <p>
+                      Selama libur Hari Raya, pelayanan pengambilan surat akan
+                      dibuka pukul 09.00 - 13.00 WITA.
+                    </p>
+                  </div>
+                  <div class="announcement-item mb-3 pb-3 border-bottom">
+                    <h6 class="fw-bold">Pembaruan Sistem</h6>
+                    <p class="small text-muted mb-2">10 Juni 2025</p>
+                    <p>
+                      Sistem persuratan online telah diperbarui dengan fitur
+                      notifikasi via WhatsApp.
+                    </p>
+                  </div>
+                  <div class="announcement-item">
+                    <h6 class="fw-bold">Dokumen Wajib untuk SKCK</h6>
+                    <p class="small text-muted mb-2">5 Juni 2025</p>
+                    <p>
+                      Pemohon SKCK wajib melampirkan fotokopi KTP, KK, dan pas
+                      foto terbaru 4x6 (2 lembar).
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+              <!-- Service Guide -->
+              <div class="card h-100">
+                <div class="card-header py-3">
+                  <h6 class="m-0 fw-bold text-primary">Panduan Layanan</h6>
+                </div>
+                <div class="card-body">
+                  <div class="accordion" id="serviceGuideAccordion">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button
+                          class="accordion-button"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne"
+                          aria-expanded="true"
+                          aria-controls="collapseOne"
+                        >
+                          Cara Mengajukan Surat
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseOne"
+                        class="accordion-collapse collapse show"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#serviceGuideAccordion"
+                      >
+                        <div class="accordion-body">
+                          <ol class="mb-0">
+                            <li>Klik menu "Pengajuan Surat" di sidebar</li>
+                            <li>Pilih jenis surat yang ingin diajukan</li>
+                            <li>Isi formulir dengan lengkap</li>
+                            <li>Unggah dokumen pendukung yang diperlukan</li>
+                            <li>
+                              Klik tombol "Ajukan" untuk mengirim permohonan
+                            </li>
+                          </ol>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseTwo"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          Syarat Dokumen SKCK
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseTwo"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#serviceGuideAccordion"
+                      >
+                        <div class="accordion-body">
+                          <ul class="mb-0">
+                            <li>Fotokopi KTP</li>
+                            <li>Fotokopi Kartu Keluarga</li>
+                            <li>Pas foto berwarna ukuran 4x6 (2 lembar)</li>
+                            <li>Surat pengantar dari RT/RW</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree"
+                          aria-expanded="false"
+                          aria-controls="collapseThree"
+                        >
+                          Syarat Surat Kehilangan
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseThree"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingThree"
+                        data-bs-parent="#serviceGuideAccordion"
+                      >
+                        <div class="accordion-body">
+                          <ul class="mb-0">
+                            <li>Fotokopi KTP</li>
+                            <li>Kronologi kehilangan barang/dokumen</li>
+                            <li>Surat pengantar dari RT/RW (jika ada)</li>
+                            <li>Fotokopi dokumen yang hilang (jika ada)</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto py-3 bg-white">
+          <div class="container-fluid">
+            <div class="text-center">
+              <span class="text-muted"
+                >&copy; 2025 Polsek Gantarang. All Rights Reserved.</span
+              >
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Kapolsek - Polsek Gantarang</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/img/favicon.ico" />
+  </head>
+  <body class="dashboard-page kapolsek-dashboard">
+    <div class="dashboard-wrapper">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="sidebar kapolsek-sidebar">
+        <div class="sidebar-header">
+          <div class="d-flex align-items-center">
+            <img
+              src="../assets/img/logo-polsek.png"
+              alt="Logo Polsek Gantarang"
+              height="45"
+            />
+            <div class="ms-3">
+              <div class="fw-bold text-white">POLSEK GANTARANG</div>
+              <div class="small text-white-50">Sistem Persuratan</div>
+            </div>
+          </div>
+          <button
+            class="btn btn-link sidebar-close d-lg-none"
+            id="closeSidebar"
+          >
+            <i class="bi bi-x-lg text-white"></i>
+          </button>
+        </div>
+        <div class="sidebar-user">
+          <div class="user-info">
+            <img
+              src="../assets/img/kapolsek-avatar.jpg"
+              alt="Kapolsek"
+              class="user-avatar"
+            />
+            <div class="user-details">
+              <div class="user-name text-white">AKBP Ferdy Sambo</div>
+              <div class="user-role text-white-50">Kapolsek</div>
+            </div>
+          </div>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="nav-item active">
+            <a href="dashboard.html" class="nav-link">
+              <i class="bi bi-speedometer2"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="laporan.html" class="nav-link">
+              <i class="bi bi-file-earmark-bar-graph"></i>
+              <span>Laporan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="#approvalSubmenu"
+              data-bs-toggle="collapse"
+              class="nav-link collapsed"
+            >
+              <i class="bi bi-check2-all"></i>
+              <span>Persetujuan</span>
+              <span class="badge bg-danger ms-2">3</span>
+              <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul class="collapse" id="approvalSubmenu">
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-people"></i>
+                  <span>Izin Keramaian</span>
+                  <span class="badge bg-danger ms-2">3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-file-earmark-text"></i>
+                  <span>Surat Penting</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a
+              href="#monitoringSubmenu"
+              data-bs-toggle="collapse"
+              class="nav-link collapsed"
+            >
+              <i class="bi bi-display"></i>
+              <span>Monitoring</span>
+              <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul class="collapse" id="monitoringSubmenu">
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-card-checklist"></i>
+                  <span>SKCK</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-search"></i>
+                  <span>Surat Kehilangan</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-people"></i>
+                  <span>Izin Keramaian</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item mt-3">
+            <a href="../index.html" class="nav-link">
+              <i class="bi bi-box-arrow-left"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <nav
+          class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow-sm"
+        >
+          <div class="container-fluid">
+            <button class="btn btn-link d-lg-none" id="openSidebar">
+              <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex align-items-center">
+              <h4 class="mb-0 text-accent fw-bold d-none d-sm-block">
+                Dashboard Kapolsek
+              </h4>
+              <h5 class="mb-0 text-accent fw-bold d-block d-sm-none">
+                Dashboard
+              </h5>
+            </div>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="notificationsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell"></i>
+                  <span class="badge bg-danger badge-counter">3</span>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-end shadow"
+                  aria-labelledby="notificationsDropdown"
+                >
+                  <h6 class="dropdown-header">Notifikasi</h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-warning text-white">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">20 Juni 2025</div>
+                      <span
+                        >3 permohonan izin keramaian menunggu persetujuan</span
+                      >
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-success text-white">
+                      <i class="bi bi-file-earmark-bar-graph"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">19 Juni 2025</div>
+                      <span>Laporan bulanan persuratan telah tersedia</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-primary text-white">
+                      <i class="bi bi-calendar-event"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">18 Juni 2025</div>
+                      <span>Pengingat: Rapat koordinasi besok pukul 09:00</span>
+                    </div>
+                  </a>
+                  <a
+                    class="dropdown-item text-center small text-gray-500"
+                    href="#"
+                    >Tampilkan semua notifikasi</a
+                  >
+                </div>
+              </li>
+              <div class="topbar-divider d-none d-sm-block"></div>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="userDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span class="d-none d-lg-inline text-gray-600 me-2"
+                    >AKBP Ferdy Sambo</span
+                  >
+                  <img
+                    class="img-profile rounded-circle"
+                    src="../assets/img/kapolsek-avatar.jpg"
+                    width="32"
+                    height="32"
+                  />
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-end shadow"
+                  aria-labelledby="userDropdown"
+                >
+                  <a class="dropdown-item" href="#">
+                    <i class="bi bi-person-fill me-2 text-gray-400"></i>
+                    Profil
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="bi bi-gear-fill me-2 text-gray-400"></i>
+                    Pengaturan
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="../index.html">
+                    <i class="bi bi-box-arrow-right me-2 text-gray-400"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container-fluid">
+          <!-- Welcome Alert -->
+          <div
+            class="alert alert-accent alert-dismissible fade show mb-4"
+            role="alert"
+          >
+            <div class="d-flex align-items-center">
+              <i class="bi bi-info-circle-fill me-2"></i>
+              <div>
+                <strong>Selamat datang, AKBP Ferdy Sambo!</strong> Anda memiliki
+                3 permohonan izin keramaian yang menunggu persetujuan.
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <!-- Page Heading -->
+          <div
+            class="d-sm-flex align-items-center justify-content-between mb-4"
+          >
+            <h1 class="h3 mb-0 text-gray-800">Ringkasan Eksekutif</h1>
+            <div>
+              <a
+                href="laporan.html"
+                class="d-none d-sm-inline-block btn btn-sm btn-accent shadow-sm me-2"
+              >
+                <i class="bi bi-file-earmark-pdf"></i> Unduh Laporan
+              </a>
+              <a
+                href="#"
+                class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+              >
+                <i class="bi bi-envelope"></i> Kirim ke Email
+              </a>
+            </div>
+          </div>
+
+          <!-- Executive Stats Cards -->
+          <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-primary h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div
+                        class="text-xs fw-bold text-primary text-uppercase mb-1"
+                      >
+                        Total Persuratan
+                      </div>
+                      <div class="h5 mb-0 fw-bold text-gray-800">128</div>
+                      <div class="small text-success mt-2">
+                        <i class="bi bi-arrow-up"></i> 12% dari bulan lalu
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="bi bi-file-earmark-text text-gray-300 fs-1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-success h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div
+                        class="text-xs fw-bold text-success text-uppercase mb-1"
+                      >
+                        Tingkat Penyelesaian
+                      </div>
+                      <div class="h5 mb-0 fw-bold text-gray-800">87%</div>
+                      <div class="small text-success mt-2">
+                        <i class="bi bi-arrow-up"></i> 3% dari bulan lalu
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="bi bi-check2-all text-gray-300 fs-1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-info h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div
+                        class="text-xs fw-bold text-info text-uppercase mb-1"
+                      >
+                        Rata-rata Waktu Proses
+                      </div>
+                      <div class="h5 mb-0 fw-bold text-gray-800">2.3 Hari</div>
+                      <div class="small text-success mt-2">
+                        <i class="bi bi-arrow-down"></i> 0.5 hari lebih cepat
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="bi bi-clock-history text-gray-300 fs-1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-warning h-100 py-2">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <div
+                        class="text-xs fw-bold text-warning text-uppercase mb-1"
+                      >
+                        Menunggu Persetujuan
+                      </div>
+                      <div class="h5 mb-0 fw-bold text-gray-800">3</div>
+                      <div class="small text-danger mt-2">
+                        <i class="bi bi-exclamation-triangle"></i> Perlu
+                        ditindaklanjuti
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="bi bi-hourglass-split text-gray-300 fs-1"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance Metrics -->
+          <div class="row">
+            <div class="col-xl-8 col-lg-7">
+              <div class="card mb-4">
+                <div
+                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                >
+                  <h6 class="m-0 fw-bold text-primary">
+                    Tren Pengajuan Surat (2025)
+                  </h6>
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-sm btn-outline-secondary dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Filter
+                    </button>
+                    <ul
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <li><a class="dropdown-item" href="#">Mingguan</a></li>
+                      <li><a class="dropdown-item" href="#">Bulanan</a></li>
+                      <li><a class="dropdown-item" href="#">Tahunan</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart-area">
+                    <img
+                      src="../assets/img/executive-chart.png"
+                      alt="Tren Pengajuan"
+                      class="img-fluid"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-5">
+              <div class="card mb-4">
+                <div
+                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                >
+                  <h6 class="m-0 fw-bold text-primary">
+                    Distribusi Jenis Surat
+                  </h6>
+                </div>
+                <div class="card-body">
+                  <div class="chart-pie mb-4">
+                    <img
+                      src="../assets/img/executive-pie-chart.png"
+                      alt="Distribusi Jenis Surat"
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="mt-4">
+                    <div
+                      class="d-flex justify-content-between align-items-center mb-1"
+                    >
+                      <span>SKCK</span>
+                      <span class="fw-bold">45%</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 8px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 45%"
+                        aria-valuenow="45"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <div
+                      class="d-flex justify-content-between align-items-center mb-1"
+                    >
+                      <span>Surat Kehilangan</span>
+                      <span class="fw-bold">35%</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 8px">
+                      <div
+                        class="progress-bar bg-success"
+                        role="progressbar"
+                        style="width: 35%"
+                        aria-valuenow="35"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <div
+                      class="d-flex justify-content-between align-items-center mb-1"
+                    >
+                      <span>Izin Keramaian</span>
+                      <span class="fw-bold">20%</span>
+                    </div>
+                    <div class="progress" style="height: 8px">
+                      <div
+                        class="progress-bar bg-info"
+                        role="progressbar"
+                        style="width: 20%"
+                        aria-valuenow="20"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pending Approvals -->
+          <div class="card mb-4">
+            <div
+              class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+            >
+              <h6 class="m-0 fw-bold text-primary">
+                Menunggu Persetujuan Kapolsek
+              </h6>
+              <button class="btn btn-sm btn-accent">
+                <i class="bi bi-check2-all me-1"></i> Setujui Semua
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>No. Pengajuan</th>
+                      <th>Tanggal</th>
+                      <th>Pemohon</th>
+                      <th>Jenis Surat</th>
+                      <th>Detail Kegiatan</th>
+                      <th>Petugas</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>IZN-2025060010</td>
+                      <td>20 Juni 2025</td>
+                      <td>Kurniawan</td>
+                      <td>Izin Keramaian</td>
+                      <td>Acara Pernikahan (500 orang)</td>
+                      <td>Siti Nurhalisa Arif</td>
+                      <td>
+                        <button class="btn btn-sm btn-accent me-1">
+                          <i class="bi bi-check"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger me-1">
+                          <i class="bi bi-x"></i>
+                        </button>
+                        <button class="btn btn-sm btn-info">
+                          <i class="bi bi-eye"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>IZN-2025060009</td>
+                      <td>19 Juni 2025</td>
+                      <td>PT. ITEB</td>
+                      <td>Izin Keramaian</td>
+                      <td>Festival Budaya (1000 orang)</td>
+                      <td>Eci china</td>
+                      <td>
+                        <button class="btn btn-sm btn-accent me-1">
+                          <i class="bi bi-check"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger me-1">
+                          <i class="bi bi-x"></i>
+                        </button>
+                        <button class="btn btn-sm btn-info">
+                          <i class="bi bi-eye"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>IZN-2025060008</td>
+                      <td>18 Juni 2025</td>
+                      <td>Panitia Organisasi</td>
+                      <td>Izin Keramaian</td>
+                      <td>Lomba 17 Agustus (300 orang)</td>
+                      <td>Ijalll</td>
+                      <td>
+                        <button class="btn btn-sm btn-accent me-1">
+                          <i class="bi bi-check"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger me-1">
+                          <i class="bi bi-x"></i>
+                        </button>
+                        <button class="btn btn-sm btn-info">
+                          <i class="bi bi-eye"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance Metrics -->
+          <div class="row">
+            <div class="col-xl-6 col-lg-6">
+              <div class="card mb-4">
+                <div
+                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                >
+                  <h6 class="m-0 fw-bold text-primary">Kinerja Petugas</h6>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Nama Petugas</th>
+                          <th>Jumlah Surat</th>
+                          <th>Rata-rata Waktu</th>
+                          <th>Performa</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>ijal</td>
+                          <td>53</td>
+                          <td>1.8 hari</td>
+                          <td>
+                            <div class="progress" style="height: 8px">
+                              <div
+                                class="progress-bar bg-success"
+                                role="progressbar"
+                                style="width: 92%"
+                                aria-valuenow="92"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                              ></div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Ferdy Sambo</td>
+                          <td>47</td>
+                          <td>2.1 hari</td>
+                          <td>
+                            <div class="progress" style="height: 8px">
+                              <div
+                                class="progress-bar bg-success"
+                                role="progressbar"
+                                style="width: 87%"
+                                aria-valuenow="87"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                              ></div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>eci china</td>
+                          <td>28</td>
+                          <td>2.5 hari</td>
+                          <td>
+                            <div class="progress" style="height: 8px">
+                              <div
+                                class="progress-bar bg-info"
+                                role="progressbar"
+                                style="width: 75%"
+                                aria-valuenow="75"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                              ></div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+              <div class="card mb-4">
+                <div
+                  class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+                >
+                  <h6 class="m-0 fw-bold text-primary">Feedback Masyarakat</h6>
+                </div>
+                <div class="card-body">
+                  <div class="feedback-summary text-center mb-4">
+                    <div class="feedback-rating">
+                      <span class="display-4 fw-bold">4.7</span>
+                      <div class="rating-stars text-warning">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                      </div>
+                      <p class="text-muted">Berdasarkan 78 ulasan</p>
+                    </div>
+                  </div>
+                  <div class="feedback-metrics">
+                    <div
+                      class="d-flex justify-content-between align-items-center mb-1"
+                    >
+                      <span>Kecepatan Pelayanan</span>
+                      <span class="fw-bold"
+                        >4.5 <i class="bi bi-star-fill text-warning small"></i
+                      ></span>
+                    </div>
+                    <div class="progress mb-3" style="height: 8px">
+                      <div
+                        class="progress-bar bg-success"
+                        role="progressbar"
+                        style="width: 90%"
+                        aria-valuenow="90"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <div
+                      class="d-flex justify-content-between align-items-center mb-1"
+                    >
+                      <span>Kemudahan Proses</span>
+                      <span class="fw-bold"
+                        >4.8 <i class="bi bi-star-fill text-warning small"></i
+                      ></span>
+                    </div>
+                    <div class="progress mb-3" style="height: 8px">
+                      <div
+                        class="progress-bar bg-success"
+                        role="progressbar"
+                        style="width: 96%"
+                        aria-valuenow="96"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <div
+                      class="d-flex justify-content-between align-items-center mb-1"
+                    >
+                      <span>Keramahan Petugas</span>
+                      <span class="fw-bold"
+                        >4.9 <i class="bi bi-star-fill text-warning small"></i
+                      ></span>
+                    </div>
+                    <div class="progress" style="height: 8px">
+                      <div
+                        class="progress-bar bg-success"
+                        role="progressbar"
+                        style="width: 98%"
+                        aria-valuenow="98"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto py-3 bg-white">
+          <div class="container-fluid">
+            <div class="text-center">
+              <span class="text-muted"
+                >&copy; 2025 Polsek Gantarang. All Rights Reserved.</span
+              >
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>

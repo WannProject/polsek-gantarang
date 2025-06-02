@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Surat - Polsek Gantarang</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/img/favicon.ico" />
+  </head>
+  <body class="dashboard-page">
+    <div class="dashboard-wrapper">
+      <!-- Sidebar -->
+      <nav id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+          <div class="d-flex align-items-center">
+            <img
+              src="../assets/img/logo-polsek.png"
+              alt="Logo Polsek Gantarang"
+              height="45"
+            />
+            <div class="ms-3">
+              <div class="fw-bold text-white">POLSEK GANTARANG</div>
+              <div class="small text-white-50">Sistem Persuratan</div>
+            </div>
+          </div>
+          <button
+            class="btn btn-link sidebar-close d-lg-none"
+            id="closeSidebar"
+          >
+            <i class="bi bi-x-lg text-white"></i>
+          </button>
+        </div>
+        <div class="sidebar-user">
+          <div class="user-info">
+            <img
+              src="../assets/img/user-avatar.png"
+              alt="User"
+              class="user-avatar"
+            />
+            <div class="user-details">
+              <div class="user-name text-white">Siti Nurhasisa Arif</div>
+              <div class="user-role text-white-50">Masyarakat</div>
+            </div>
+          </div>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="nav-item">
+            <a href="dashboard.html" class="nav-link">
+              <i class="bi bi-speedometer2"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="form-pengajuan.html" class="nav-link">
+              <i class="bi bi-file-earmark-plus"></i>
+              <span>Pengajuan Surat</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="status-surat.html" class="nav-link">
+              <i class="bi bi-hourglass-split"></i>
+              <span>Status Pengajuan</span>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a href="detail-surat.html" class="nav-link">
+              <i class="bi bi-file-earmark-check"></i>
+              <span>Surat Selesai</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="#profileSubmenu"
+              data-bs-toggle="collapse"
+              class="nav-link collapsed"
+            >
+              <i class="bi bi-person"></i>
+              <span>Profil</span>
+              <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul class="collapse" id="profileSubmenu">
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-person-gear"></i>
+                  <span>Edit Profil</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link">
+                  <i class="bi bi-key"></i>
+                  <span>Ubah Password</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item mt-3">
+            <a href="../index.html" class="nav-link">
+              <i class="bi bi-box-arrow-left"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <nav
+          class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow-sm"
+        >
+          <div class="container-fluid">
+            <button class="btn btn-link d-lg-none" id="openSidebar">
+              <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex align-items-center">
+              <h4 class="mb-0 text-primary fw-bold">Detail Surat</h4>
+            </div>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="notificationsDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell"></i>
+                  <span class="badge bg-danger badge-counter">3</span>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-end shadow"
+                  aria-labelledby="notificationsDropdown"
+                >
+                  <h6 class="dropdown-header">Notifikasi</h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-primary text-white">
+                      <i class="bi bi-check-circle"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">20 Juni 2025</div>
+                      <span>Pengajuan SKCK Anda telah disetujui</span>
+                    </div>
+                  </a>
+                  <a
+                    class="dropdown-item text-center small text-gray-500"
+                    href="#"
+                    >Tampilkan semua notifikasi</a
+                  >
+                </div>
+              </li>
+              <div class="topbar-divider d-none d-sm-block"></div>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="userDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span class="d-none d-lg-inline text-gray-600 me-2"
+                    >Siti Nurhasisa Arif</span
+                  >
+                  <img
+                    class="img-profile rounded-circle"
+                    src="../assets/img/user-avatar.png"
+                    width="32"
+                    height="32"
+                  />
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-end shadow"
+                  aria-labelledby="userDropdown"
+                >
+                  <a class="dropdown-item" href="#">
+                    <i class="bi bi-person-fill me-2 text-gray-400"></i>
+                    Profil
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="../index.html">
+                    <i class="bi bi-box-arrow-right me-2 text-gray-400"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container-fluid">
+          <!-- Letter Details -->
+          <div class="row">
+            <div class="col-lg-8">
+              <!-- Letter Preview -->
+              <div class="card mb-4">
+                <div
+                  class="card-header py-3 d-flex justify-content-between align-items-center"
+                >
+                  <h6 class="m-0 fw-bold text-primary">Preview Surat</h6>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-primary">
+                      <i class="bi bi-download me-2"></i>Download
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-primary"
+                    >
+                      <i class="bi bi-printer me-2"></i>Print
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="letter-preview bg-light p-4">
+                    <!-- Letter Header -->
+                    <div class="text-center mb-4">
+                      <img
+                        src="../assets/img/logo-polsek.png"
+                        alt="Logo Polsek"
+                        height="80"
+                      />
+                      <h5 class="mt-3 mb-0">
+                        KEPOLISIAN NEGARA REPUBLIK INDONESIA
+                      </h5>
+                      <h6>DAERAH SULAWESI SELATAN</h6>
+                      <h6>RESORT BULUKUMBA</h6>
+                      <h5 class="fw-bold">SEKTOR GANTARANG</h5>
+                      <hr class="my-4" />
+                      <h4 class="fw-bold">
+                        SURAT KETERANGAN CATATAN KEPOLISIAN
+                      </h4>
+                      <p class="mb-0">Nomor: SKCK/123/VI/2025/Polsek</p>
+                    </div>
+
+                    <!-- Letter Content -->
+                    <div class="letter-content">
+                      <p>
+                        Yang bertanda tangan di bawah ini, Kepala Kepolisian
+                        Sektor Gantarang, dengan ini menerangkan bahwa:
+                      </p>
+
+                      <div class="ms-4 mb-4">
+                        <table>
+                          <tr>
+                            <td width="150">Nama</td>
+                            <td width="20">:</td>
+                            <td>Siti Nurhasisa Arif</td>
+                          </tr>
+                          <tr>
+                            <td>Tempat/Tgl Lahir</td>
+                            <td>:</td>
+                            <td>Bulukumba, 15 Mei 1990</td>
+                          </tr>
+                          <tr>
+                            <td>Jenis Kelamin</td>
+                            <td>:</td>
+                            <td>Laki-laki</td>
+                          </tr>
+                          <tr>
+                            <td>Agama</td>
+                            <td>:</td>
+                            <td>Islam</td>
+                          </tr>
+                          <tr>
+                            <td>Pekerjaan</td>
+                            <td>:</td>
+                            <td>Wiraswasta</td>
+                          </tr>
+                          <tr>
+                            <td>Alamat</td>
+                            <td>:</td>
+                            <td>
+                              Jl. Pahlawan No. 123, Kec. Gantarang, Kab.
+                              Bulukumba
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+
+                      <p>Berdasarkan data yang ada, yang bersangkutan:</p>
+                      <ol class="ms-4 mb-4">
+                        <li>Berkelakuan baik</li>
+                        <li>Tidak pernah terlibat perkara pidana</li>
+                        <li>Tidak pernah terlibat organisasi terlarang</li>
+                      </ol>
+
+                      <p>
+                        Surat Keterangan ini diberikan untuk keperluan:
+                        <strong>Melamar Pekerjaan</strong>
+                      </p>
+
+                      <p>
+                        Demikian Surat Keterangan Catatan Kepolisian ini dibuat
+                        dengan sebenarnya untuk dapat dipergunakan sebagaimana
+                        mestinya.
+                      </p>
+
+                      <div class="text-end mt-5">
+                        <p class="mb-5">Gantarang, 20 Juni 2025</p>
+                        <p class="mb-0">KEPALA KEPOLISIAN SEKTOR GANTARANG</p>
+                        <img
+                          src="../assets/img/ttd-kapolsek.png"
+                          alt="Tanda Tangan"
+                          height="100"
+                        />
+                        <p class="mb-0 fw-bold">AKBP SURYA DARMA</p>
+                        <p>NRP. 12345678</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Supporting Documents -->
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 fw-bold text-primary">Dokumen Pendukung</h6>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Nama Dokumen</th>
+                          <th>Tipe</th>
+                          <th>Ukuran</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>KTP.jpg</td>
+                          <td>Image/JPEG</td>
+                          <td>1.2 MB</td>
+                          <td>
+                            <button class="btn btn-sm btn-primary">
+                              <i class="bi bi-eye me-1"></i>Lihat
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Pas_Foto.jpg</td>
+                          <td>Image/JPEG</td>
+                          <td>800 KB</td>
+                          <td>
+                            <button class="btn btn-sm btn-primary">
+                              <i class="bi bi-eye me-1"></i>Lihat
+                            </button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Surat_Pengantar_RT.pdf</td>
+                          <td>Application/PDF</td>
+                          <td>500 KB</td>
+                          <td>
+                            <button class="btn btn-sm btn-primary">
+                              <i class="bi bi-eye me-1"></i>Lihat
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <!-- Letter Information -->
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 fw-bold text-primary">Informasi Surat</h6>
+                </div>
+                <div class="card-body">
+                  <table class="table table-sm">
+                    <tr>
+                      <td>No. Pengajuan</td>
+                      <td>:</td>
+                      <td>SRT-2025060001</td>
+                    </tr>
+                    <tr>
+                      <td>No. Surat</td>
+                      <td>:</td>
+                      <td>SKCK/123/VI/2025/Polsek</td>
+                    </tr>
+                    <tr>
+                      <td>Jenis Surat</td>
+                      <td>:</td>
+                      <td>SKCK</td>
+                    </tr>
+                    <tr>
+                      <td>Tanggal Pengajuan</td>
+                      <td>:</td>
+                      <td>20 Juni 2025</td>
+                    </tr>
+                    <tr>
+                      <td>Tanggal Selesai</td>
+                      <td>:</td>
+                      <td>20 Juni 2025</td>
+                    </tr>
+                    <tr>
+                      <td>Status</td>
+                      <td>:</td>
+                      <td><span class="badge bg-success">Selesai</span></td>
+                    </tr>
+                    <tr>
+                      <td>Petugas</td>
+                      <td>:</td>
+                      <td>Kurniawan</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Status Timeline -->
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 fw-bold text-primary">Timeline Status</h6>
+                </div>
+                <div class="card-body">
+                  <div class="timeline">
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-success">
+                        <i class="bi bi-check-lg"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <h6 class="mb-1">Surat Selesai</h6>
+                        <p class="small text-muted mb-0">20 Juni 2025, 14:30</p>
+                        <p class="mb-0">
+                          Surat telah selesai dan dapat diambil
+                        </p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-primary">
+                        <i class="bi bi-pencil"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <h6 class="mb-1">Proses Tanda Tangan</h6>
+                        <p class="small text-muted mb-0">20 Juni 2025, 13:15</p>
+                        <p class="mb-0">
+                          Surat sedang dalam proses tanda tangan
+                        </p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-info">
+                        <i class="bi bi-file-text"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <h6 class="mb-1">Pembuatan Surat</h6>
+                        <p class="small text-muted mb-0">20 Juni 2025, 11:45</p>
+                        <p class="mb-0">Surat sedang dalam proses pembuatan</p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-success">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <h6 class="mb-1">Verifikasi Berhasil</h6>
+                        <p class="small text-muted mb-0">20 Juni 2025, 10:30</p>
+                        <p class="mb-0">Dokumen telah diverifikasi</p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-icon bg-primary">
+                        <i class="bi bi-file-plus"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <h6 class="mb-1">Pengajuan Diterima</h6>
+                        <p class="small text-muted mb-0">20 Juni 2025, 09:00</p>
+                        <p class="mb-0">Pengajuan surat telah diterima</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="card mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 fw-bold text-primary">Aksi</h6>
+                </div>
+                <div class="card-body">
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-primary">
+                      <i class="bi bi-download me-2"></i>Download Surat
+                    </button>
+                    <button class="btn btn-outline-primary">
+                      <i class="bi bi-printer me-2"></i>Print Surat
+                    </button>
+                    <button class="btn btn-outline-primary">
+                      <i class="bi bi-share me-2"></i>Bagikan
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto py-3 bg-white">
+          <div class="container-fluid">
+            <div class="text-center">
+              <span class="text-muted"
+                >&copy; 2025 Polsek Gantarang. All Rights Reserved.</span
+              >
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>
