@@ -80,31 +80,6 @@
               <span>Surat Selesai</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a
-              href="#profileSubmenu"
-              data-bs-toggle="collapse"
-              class="nav-link collapsed"
-            >
-              <i class="bi bi-person"></i>
-              <span>Profil</span>
-              <i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul class="collapse" id="profileSubmenu">
-              <li>
-                <a href="#" class="nav-link">
-                  <i class="bi bi-person-gear"></i>
-                  <span>Edit Profil</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link">
-                  <i class="bi bi-key"></i>
-                  <span>Ubah Password</span>
-                </a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-item mt-3">
             <a href="../index.html" class="nav-link">
               <i class="bi bi-box-arrow-left"></i>
@@ -185,7 +160,7 @@
                   class="dropdown-menu dropdown-menu-end shadow"
                   aria-labelledby="userDropdown"
                 >
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="/masyarakat/edit-profil.html">
                     <i class="bi bi-person-fill me-2 text-gray-400"></i>
                     Profil
                   </a>
@@ -352,17 +327,15 @@
                       <td><span class="badge bg-success">Selesai</span></td>
                       <td>Surat dapat diambil di kantor Polsek</td>
                       <td>
-                        <button
-                          class="btn btn-sm btn-info me-1"
-                          data-bs-toggle="modal"
-                          data-bs-target="#trackingModal"
-                        >
-                          <i class="bi bi-clock-history"></i>
-                        </button>
                         <button class="btn btn-sm btn-primary me-1">
                           <i class="bi bi-download"></i>
                         </button>
-                        <button class="btn btn-sm btn-secondary">
+                        <button
+                          class="btn btn-sm btn-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#detailModal"
+                          data-id="SRT-2025060002"
+                        >
                           <i class="bi bi-eye"></i>
                         </button>
                       </td>
@@ -379,13 +352,11 @@
                       <td>Dokumen sedang diverifikasi</td>
                       <td>
                         <button
-                          class="btn btn-sm btn-info me-1"
+                          class="btn btn-sm btn-secondary"
                           data-bs-toggle="modal"
-                          data-bs-target="#trackingModal"
+                          data-bs-target="#detailModal"
+                          data-id="SRT-2025060002"
                         >
-                          <i class="bi bi-clock-history"></i>
-                        </button>
-                        <button class="btn btn-sm btn-secondary">
                           <i class="bi bi-eye"></i>
                         </button>
                       </td>
@@ -398,13 +369,11 @@
                       <td>Menunggu tanda tangan Kapolsek</td>
                       <td>
                         <button
-                          class="btn btn-sm btn-info me-1"
+                          class="btn btn-sm btn-secondary"
                           data-bs-toggle="modal"
-                          data-bs-target="#trackingModal"
+                          data-bs-target="#detailModal"
+                          data-id="SRT-2025060002"
                         >
-                          <i class="bi bi-clock-history"></i>
-                        </button>
-                        <button class="btn btn-sm btn-secondary">
                           <i class="bi bi-eye"></i>
                         </button>
                       </td>
@@ -433,116 +402,6 @@
           </div>
         </div>
 
-        <!-- Tracking Modal -->
-        <div class="modal fade" id="trackingModal" tabindex="-1">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Status Tracking</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <div class="tracking-info mb-4">
-                  <div class="d-flex justify-content-between mb-3">
-                    <div>
-                      <h6 class="fw-bold mb-1">
-                        No. Pengajuan: SRT-2025060001
-                      </h6>
-                      <p class="small text-muted mb-0">
-                        SKCK - Siti Nurhasisa Arif
-                      </p>
-                    </div>
-                    <span class="badge bg-success">Selesai</span>
-                  </div>
-                </div>
-                <div class="tracking-timeline">
-                  <div class="tracking-item">
-                    <div class="tracking-icon bg-success">
-                      <i class="bi bi-check-lg"></i>
-                    </div>
-                    <div class="tracking-content">
-                      <h6 class="mb-1">Surat Selesai</h6>
-                      <p class="small text-muted mb-0">20 Juni 2025, 14:30</p>
-                      <p class="mb-0">
-                        Surat telah selesai dan dapat diambil di kantor Polsek
-                      </p>
-                    </div>
-                  </div>
-                  <div class="tracking-item">
-                    <div class="tracking-icon bg-primary">
-                      <i class="bi bi-pencil"></i>
-                    </div>
-                    <div class="tracking-content">
-                      <h6 class="mb-1">Proses Tanda Tangan</h6>
-                      <p class="small text-muted mb-0">20 Juni 2025, 13:15</p>
-                      <p class="mb-0">
-                        Surat sedang dalam proses tanda tangan Kapolsek
-                      </p>
-                    </div>
-                  </div>
-                  <div class="tracking-item">
-                    <div class="tracking-icon bg-info">
-                      <i class="bi bi-file-earmark-text"></i>
-                    </div>
-                    <div class="tracking-content">
-                      <h6 class="mb-1">Pembuatan Surat</h6>
-                      <p class="small text-muted mb-0">20 Juni 2025, 11:45</p>
-                      <p class="mb-0">
-                        Surat sedang dalam proses pembuatan oleh petugas
-                      </p>
-                    </div>
-                  </div>
-                  <div class="tracking-item">
-                    <div class="tracking-icon bg-success">
-                      <i class="bi bi-check-circle"></i>
-                    </div>
-                    <div class="tracking-content">
-                      <h6 class="mb-1">Verifikasi Berhasil</h6>
-                      <p class="small text-muted mb-0">20 Juni 2025, 10:30</p>
-                      <p class="mb-0">
-                        Dokumen telah diverifikasi dan disetujui
-                      </p>
-                    </div>
-                  </div>
-                  <div class="tracking-item">
-                    <div class="tracking-icon bg-warning">
-                      <i class="bi bi-hourglass-split"></i>
-                    </div>
-                    <div class="tracking-content">
-                      <h6 class="mb-1">Verifikasi Dokumen</h6>
-                      <p class="small text-muted mb-0">20 Juni 2025, 09:15</p>
-                      <p class="mb-0">Dokumen sedang dalam proses verifikasi</p>
-                    </div>
-                  </div>
-                  <div class="tracking-item">
-                    <div class="tracking-icon bg-primary">
-                      <i class="bi bi-file-earmark-plus"></i>
-                    </div>
-                    <div class="tracking-content">
-                      <h6 class="mb-1">Pengajuan Diterima</h6>
-                      <p class="small text-muted mb-0">20 Juni 2025, 09:00</p>
-                      <p class="mb-0">Pengajuan surat telah diterima sistem</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Tutup
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Footer -->
         <footer class="footer mt-auto py-3 bg-white">
           <div class="container-fluid">
@@ -556,9 +415,239 @@
       </div>
     </div>
 
+    <!-- Detail Modal -->
+    <div
+      class="modal fade"
+      id="detailModal"
+      tabindex="-1"
+      aria-labelledby="detailModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="detailModalLabel">Detail Pengajuan</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h6 class="fw-bold">Informasi Pengajuan</h6>
+                <table class="table table-sm">
+                  <tr>
+                    <th width="40%">Nomor Pengajuan</th>
+                    <td id="modal-no-pengajuan">SRT-2025060001</td>
+                  </tr>
+                  <tr>
+                    <th>Tanggal Pengajuan</th>
+                    <td id="modal-tanggal">20 Juni 2025</td>
+                  </tr>
+                  <tr>
+                    <th>Jenis Surat</th>
+                    <td id="modal-jenis">SKCK</td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td>
+                      <span class="status-badge bg-success" id="modal-status"
+                        >Selesai</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Keterangan</th>
+                    <td id="modal-keterangan">
+                      Surat dapat diambil di kantor Polsek
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-md-6">
+                <h6 class="fw-bold">Proses Pengajuan</h6>
+                <div class="timeline">
+                  <div class="timeline-item">
+                    <div class="timeline-badge bg-success"></div>
+                    <div class="timeline-content">
+                      <h6 class="fw-bold">Selesai</h6>
+                      <p class="small mb-1">20 Juni 2025 - 14:30</p>
+                      <p class="small text-muted">
+                        Surat telah selesai diproses dan dapat diambil
+                      </p>
+                    </div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-badge bg-info"></div>
+                    <div class="timeline-content">
+                      <h6 class="fw-bold">Proses Verifikasi</h6>
+                      <p class="small mb-1">20 Juni 2025 - 10:15</p>
+                      <p class="small text-muted">
+                        Petugas memverifikasi dokumen
+                      </p>
+                    </div>
+                  </div>
+                  <div class="timeline-item">
+                    <div class="timeline-badge bg-primary"></div>
+                    <div class="timeline-content">
+                      <h6 class="fw-bold">Pengajuan Diterima</h6>
+                      <p class="small mb-1">20 Juni 2025 - 09:00</p>
+                      <p class="small text-muted">
+                        Pengajuan telah diterima sistem
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <h6 class="fw-bold">Dokumen Pendukung</h6>
+                <div class="d-flex flex-wrap gap-2">
+                  <div class="document-thumbnail">
+                    <img
+                      src="../assets/img/doc-sample-1.jpg"
+                      class="img-thumbnail"
+                    />
+                    <span class="document-name">KTP.jpg</span>
+                  </div>
+                  <div class="document-thumbnail">
+                    <img
+                      src="../assets/img/doc-sample-2.jpg"
+                      class="img-thumbnail"
+                    />
+                    <span class="document-name">KK.jpg</span>
+                  </div>
+                  <div class="document-thumbnail">
+                    <img
+                      src="../assets/img/doc-sample-3.jpg"
+                      class="img-thumbnail"
+                    />
+                    <span class="document-name">Surat Pengantar.jpg</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Tutup
+            </button>
+            <button type="button" class="btn btn-primary">
+              <i class="bi bi-download me-1"></i> Unduh Surat
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="../assets/js/script.js"></script>
+    <script>
+      // Fungsi untuk menangani klik tombol view
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tangkap modal
+        const detailModal = document.getElementById("detailModal");
+
+        // Ketika modal akan ditampilkan
+        detailModal.addEventListener("show.bs.modal", function (event) {
+          // Tombol yang memicu modal
+          const button = event.relatedTarget;
+
+          // Ekstrak info dari data-* attributes
+          const idPengajuan = button.getAttribute("data-id");
+
+          // Temukan baris yang sesuai di tabel
+          const row = button.closest("tr");
+          const cells = row.querySelectorAll("td");
+
+          // Update konten modal
+          document.getElementById("modal-no-pengajuan").textContent =
+            cells[0].textContent;
+          document.getElementById("modal-tanggal").textContent =
+            cells[1].textContent;
+          document.getElementById("modal-jenis").textContent =
+            cells[2].textContent;
+
+          // Clone status badge dari tabel ke modal
+          const statusBadge = cells[3].querySelector(".badge").cloneNode(true);
+          const modalStatus = document.getElementById("modal-status");
+          modalStatus.className = "badge";
+          modalStatus.classList.add(
+            statusBadge.classList.toString().replace("badge ", "")
+          );
+          modalStatus.textContent = statusBadge.textContent;
+
+          document.getElementById("modal-keterangan").textContent =
+            cells[4].textContent;
+
+          // Update judul modal
+          document.getElementById(
+            "detailModalLabel"
+          ).textContent = `Detail Pengajuan - ${idPengajuan}`;
+        });
+      });
+    </script>
+    <style>
+      /* Timeline Style */
+      .timeline {
+        position: relative;
+        padding-left: 20px;
+      }
+      .timeline-item {
+        position: relative;
+        padding-bottom: 20px;
+      }
+      .timeline-badge {
+        position: absolute;
+        left: -20px;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        z-index: 1;
+      }
+      .timeline-content {
+        padding-left: 10px;
+      }
+      .timeline-item:not(:last-child)::before {
+        content: "";
+        position: absolute;
+        left: -13px;
+        top: 16px;
+        bottom: 0;
+        width: 2px;
+        background-color: #e9ecef;
+      }
+
+      /* Dokumen Thumbnail Style */
+      .document-thumbnail {
+        position: relative;
+        width: 120px;
+        text-align: center;
+      }
+      .document-thumbnail .img-thumbnail {
+        width: 100%;
+        height: 80px;
+        object-fit: cover;
+      }
+      .document-name {
+        display: block;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
   </body>
 </html>

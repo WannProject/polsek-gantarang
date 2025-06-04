@@ -82,29 +82,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a
-              href="#managementSubmenu"
-              data-bs-toggle="collapse"
-              class="nav-link collapsed"
-            >
-              <i class="bi bi-gear"></i>
-              <span>Manajemen</span>
-              <i class="bi bi-chevron-down ms-auto"></i>
+            <a href="user-management.html" class="nav-link">
+              <i class="bi bi-people"></i>
+              <span>Management User</span>
             </a>
-            <ul class="collapse" id="managementSubmenu">
-              <li>
-                <a href="#" class="nav-link">
-                  <i class="bi bi-person-badge"></i>
-                  <span>Pengguna</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link">
-                  <i class="bi bi-file-earmark-ruled"></i>
-                  <span>Jenis Surat</span>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item mt-3">
             <a href="../index.html" class="nav-link">
@@ -186,7 +167,7 @@
                   class="dropdown-menu dropdown-menu-end shadow"
                   aria-labelledby="userDropdown"
                 >
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="/admin/edit-profil.html">
                     <i class="bi bi-person-fill me-2 text-gray-400"></i>
                     Profil
                   </a>
@@ -302,7 +283,76 @@
                         </button>
                       </td>
                     </tr>
-                    <!-- Add more rows as needed -->
+                    <!-- Surat Kehilangan Row -->
+                    <tr>
+                      <td>SRT-2025060011</td>
+                      <td>21 Juni 2025</td>
+                      <td>Ani Wijaya</td>
+                      <td>Surat Kehilangan</td>
+                      <td>
+                        <span class="badge bg-warning text-dark"
+                          >Menunggu Verifikasi</span
+                        >
+                      </td>
+                      <td>
+                        <button
+                          class="btn btn-sm btn-success me-1"
+                          data-bs-toggle="modal"
+                          data-bs-target="#verificationModal"
+                        >
+                          <i class="bi bi-check-lg"></i>
+                        </button>
+                        <button
+                          class="btn btn-sm btn-danger me-1"
+                          data-bs-toggle="modal"
+                          data-bs-target="#rejectionModal"
+                        >
+                          <i class="bi bi-x-lg"></i>
+                        </button>
+                        <button
+                          class="btn btn-sm btn-info"
+                          data-bs-toggle="modal"
+                          data-bs-target="#kehilanganModal"
+                        >
+                          <i class="bi bi-eye"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <!-- Surat Ijin Keramaian Row -->
+                    <tr>
+                      <td>SRT-2025060012</td>
+                      <td>22 Juni 2025</td>
+                      <td>Rudi Hartono</td>
+                      <td>Surat Ijin Keramaian</td>
+                      <td>
+                        <span class="badge bg-warning text-dark"
+                          >Menunggu Verifikasi</span
+                        >
+                      </td>
+                      <td>
+                        <button
+                          class="btn btn-sm btn-success me-1"
+                          data-bs-toggle="modal"
+                          data-bs-target="#verificationModal"
+                        >
+                          <i class="bi bi-check-lg"></i>
+                        </button>
+                        <button
+                          class="btn btn-sm btn-danger me-1"
+                          data-bs-toggle="modal"
+                          data-bs-target="#rejectionModal"
+                        >
+                          <i class="bi bi-x-lg"></i>
+                        </button>
+                        <button
+                          class="btn btn-sm btn-info"
+                          data-bs-toggle="modal"
+                          data-bs-target="#keramaianModal"
+                        >
+                          <i class="bi bi-eye"></i>
+                        </button>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -436,7 +486,7 @@
           </div>
         </div>
 
-        <!-- Detail Modal -->
+        <!-- SKCK detail Modal -->
         <div class="modal fade" id="detailModal" tabindex="-1">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -505,6 +555,34 @@
                     </table>
                   </div>
                 </div>
+                <!-- keperluan skck -->
+                <div class="row">
+                  <div class="col-12">
+                    <h6 class="fw-bold">Keperluan SKCK</h6>
+                    <div class="table-responsive">
+                      <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th>Informasi</th>
+                            <th>Detail</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Melamar Pekerjaan</td>
+                            <td id="modalSkckPurpose">-</td>
+                          </tr>
+                          <tr id="modalOtherPurposeRow" style="display: none">
+                            <td>Keperluan Lainnya</td>
+                            <td id="modalSkckOtherPurpose">-</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- dokumen pendukung -->
                 <div class="row">
                   <div class="col-12">
                     <h6 class="fw-bold">Dokumen Pendukung</h6>
@@ -533,6 +611,329 @@
                             <td>Pas_Foto.jpg</td>
                             <td>Image/JPEG</td>
                             <td>800 KB</td>
+                            <td>
+                              <button class="btn btn-sm btn-primary">
+                                <i class="bi bi-eye me-1"></i>Lihat
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Tutup
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Surat Kehilangan Modal -->
+        <div class="modal fade" id="kehilanganModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Detail Pengajuan Surat Kehilangan</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="row mb-4">
+                  <div class="col-md-6">
+                    <h6 class="fw-bold">Informasi Pengajuan</h6>
+                    <table class="table table-sm">
+                      <tr>
+                        <td>No. Pengajuan</td>
+                        <td>:</td>
+                        <td>SRT-2025060011</td>
+                      </tr>
+                      <tr>
+                        <td>Tanggal</td>
+                        <td>:</td>
+                        <td>21 Juni 2025</td>
+                      </tr>
+                      <tr>
+                        <td>Jenis Surat</td>
+                        <td>:</td>
+                        <td>Surat Kehilangan</td>
+                      </tr>
+                      <tr>
+                        <td>Status</td>
+                        <td>:</td>
+                        <td>
+                          <span class="badge bg-warning text-dark"
+                            >Menunggu Verifikasi</span
+                          >
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-md-6">
+                    <h6 class="fw-bold">Data Pemohon</h6>
+                    <table class="table table-sm">
+                      <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td>Ani Wijaya</td>
+                      </tr>
+                      <tr>
+                        <td>NIK</td>
+                        <td>:</td>
+                        <td>2345678901234567</td>
+                      </tr>
+                      <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>Jl. Merdeka No. 45, Gantarang</td>
+                      </tr>
+                      <tr>
+                        <td>No. HP</td>
+                        <td>:</td>
+                        <td>08234567890</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-12">
+                    <h6 class="fw-bold">Detail Kehilangan</h6>
+                    <table class="table table-sm">
+                      <tr>
+                        <td>Barang yang Hilang</td>
+                        <td>:</td>
+                        <td>Dompet</td>
+                      </tr>
+                      <tr>
+                        <td>Deskripsi Barang</td>
+                        <td>:</td>
+                        <td>
+                          Dompet kulit warna coklat, berisi KTP dan kartu ATM
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Waktu Kehilangan</td>
+                        <td>:</td>
+                        <td>20 Juni 2025, sekitar pukul 14.00</td>
+                      </tr>
+                      <tr>
+                        <td>Tempat Kehilangan</td>
+                        <td>:</td>
+                        <td>Pasar Tradisional Gantarang</td>
+                      </tr>
+                      <tr>
+                        <td>Kronologi Kehilangan</td>
+                        <td>:</td>
+                        <td>saya di begal</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <h6 class="fw-bold">Dokumen Pendukung</h6>
+                    <div class="table-responsive">
+                      <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th>Nama Dokumen</th>
+                            <th>Tipe</th>
+                            <th>Ukuran</th>
+                            <th>Aksi</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>KTP.jpg</td>
+                            <td>Image/JPEG</td>
+                            <td>1.5 MB</td>
+                            <td>
+                              <button class="btn btn-sm btn-primary">
+                                <i class="bi bi-eye me-1"></i>Lihat
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Tutup
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Surat Ijin Keramaian Modal -->
+        <div class="modal fade" id="keramaianModal" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  Detail Pengajuan Surat Ijin Keramaian
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="row mb-4">
+                  <div class="col-md-6">
+                    <h6 class="fw-bold">Informasi Pengajuan</h6>
+                    <table class="table table-sm">
+                      <tr>
+                        <td>No. Pengajuan</td>
+                        <td>:</td>
+                        <td>SRT-2025060012</td>
+                      </tr>
+                      <tr>
+                        <td>Tanggal</td>
+                        <td>:</td>
+                        <td>22 Juni 2025</td>
+                      </tr>
+                      <tr>
+                        <td>Jenis Surat</td>
+                        <td>:</td>
+                        <td>Surat Ijin Keramaian</td>
+                      </tr>
+                      <tr>
+                        <td>Status</td>
+                        <td>:</td>
+                        <td>
+                          <span class="badge bg-warning text-dark"
+                            >Menunggu Verifikasi</span
+                          >
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-md-6">
+                    <h6 class="fw-bold">Data Pemohon</h6>
+                    <table class="table table-sm">
+                      <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td>Rudi Hartono</td>
+                      </tr>
+                      <tr>
+                        <td>NIK</td>
+                        <td>:</td>
+                        <td>3456789012345678</td>
+                      </tr>
+                      <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>Jl. Sudirman No. 78, Gantarang</td>
+                      </tr>
+                      <tr>
+                        <td>No. HP</td>
+                        <td>:</td>
+                        <td>08345678901</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-12">
+                    <h6 class="fw-bold">Detail Kegiatan</h6>
+                    <table class="table table-sm">
+                      <tr>
+                        <td>Nama Kegiatan</td>
+                        <td>:</td>
+                        <td>Pentas Seni Budaya</td>
+                      </tr>
+                      <tr>
+                        <td>Tempat Kegiatan</td>
+                        <td>:</td>
+                        <td>Lapangan Kecamatan Gantarang</td>
+                      </tr>
+                      <tr>
+                        <td>Tanggal Mulai</td>
+                        <td>:</td>
+                        <td>25 Juni 2025</td>
+                      </tr>
+                      <tr></tr>
+                      <tr>
+                        <td>Tanggal Selesai</td>
+                        <td>:</td>
+                        <td>27 Juni 2025</td>
+                      </tr>
+                      <tr>
+                        <td>Waktu Mulai</td>
+                        <td>:</td>
+                        <td>19.00 WITA</td>
+                      </tr>
+                      <tr>
+                        <td>Waktu Selesai</td>
+                        <td>:</td>
+                        <td>23.00 WITA</td>
+                      </tr>
+                      <tr>
+                        <td>Tempat/Lokasi</td>
+                        <td>:</td>
+                        <td>Tanah beru kecamatan bontobahari</td>
+                      </tr>
+                      <tr>
+                        <td>Penanggung Jawab</td>
+                        <td>:</td>
+                        <td>kurniawan</td>
+                      </tr>
+                      <tr>
+                        <td>Deskrispi kegiatan</td>
+                        <td>:</td>
+                        <td>acaran malucca</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <h6 class="fw-bold">Dokumen Pendukung</h6>
+                    <div class="table-responsive">
+                      <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th>Nama Dokumen</th>
+                            <th>Tipe</th>
+                            <th>Ukuran</th>
+                            <th>Aksi</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>KTP.pdf</td>
+                            <td>Application/PDF</td>
+                            <td>1.8 MB</td>
+                            <td>
+                              <button class="btn btn-sm btn-primary">
+                                <i class="bi bi-eye me-1"></i>Lihat
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Surat Permohonan</td>
+                            <td>Application/PDF</td>
+                            <td>3.2 MB</td>
                             <td>
                               <button class="btn btn-sm btn-primary">
                                 <i class="bi bi-eye me-1"></i>Lihat

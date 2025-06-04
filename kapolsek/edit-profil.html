@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profil - Polsek Gantarang</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="icon" href="../assets/img/favicon.ico" />
+    <style>
+      .profile-picture {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 5px solid white;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+      .profile-section {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 2rem;
+      }
+      .form-label {
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body class="dashboard-page kapolsek-dashboard">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar kapolsek-sidebar">
+      <div class="sidebar-header">
+        <div class="d-flex align-items-center">
+          <img
+            src="../assets/img/logo-polsek.png"
+            alt="Logo Polsek Gantarang"
+            height="45"
+          />
+          <div class="ms-3">
+            <div class="fw-bold text-white">POLSEK GANTARANG</div>
+            <div class="small text-white-50">Sistem Persuratan</div>
+          </div>
+        </div>
+        <button class="btn btn-link sidebar-close d-lg-none" id="closeSidebar">
+          <i class="bi bi-x-lg text-white"></i>
+        </button>
+      </div>
+      <div class="sidebar-user">
+        <div class="user-info">
+          <img
+            src="../assets/img/kapolsek-avatar.jpg"
+            alt="Kapolsek"
+            class="user-avatar"
+          />
+          <div class="user-details">
+            <div class="user-name text-white">AKBP Ferdy Sambo</div>
+            <div class="user-role text-white-50">Kapolsek</div>
+          </div>
+        </div>
+      </div>
+      <ul class="sidebar-nav">
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link">
+            <i class="bi bi-speedometer2"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="laporan.html" class="nav-link">
+            <i class="bi bi-file-earmark-bar-graph"></i>
+            <span>Laporan</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#monitoringSubmenu"
+            data-bs-toggle="collapse"
+            class="nav-link collapsed"
+          >
+            <i class="bi bi-display"></i>
+            <span>Monitoring</span>
+            <i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul class="collapse" id="monitoringSubmenu">
+            <li>
+              <a href="/kapolsek/skck.html" class="nav-link">
+                <i class="bi bi-card-checklist"></i>
+                <span>SKCK</span>
+              </a>
+            </li>
+            <li>
+              <a href="/kapolsek/surat-kehilangan.html" class="nav-link">
+                <i class="bi bi-search"></i>
+                <span>Surat Kehilangan</span>
+              </a>
+            </li>
+            <li>
+              <a href="/kapolsek/ijin-keramaian.html" class="nav-link">
+                <i class="bi bi-people"></i>
+                <span>Izin Keramaian</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item mt-3">
+          <a href="../index.html" class="nav-link">
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="main-content">
+      <!-- Topbar -->
+      <nav
+        class="navbar navbar-expand navbar-light bg-white topbar mb-4 shadow-sm"
+      >
+        <div class="container-fluid">
+          <button class="btn btn-link d-lg-none" id="openSidebar">
+            <i class="bi bi-list"></i>
+          </button>
+          <div class="d-flex align-items-center">
+            <h4 class="mb-0 text-accent fw-bold">Edit Profil Kapolsek</h4>
+          </div>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="notificationsDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-bell"></i>
+                <span class="badge bg-danger badge-counter">3</span>
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-end shadow"
+                aria-labelledby="notificationsDropdown"
+              >
+                <h6 class="dropdown-header">Notifikasi</h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="notification-icon bg-warning text-white">
+                    <i class="bi bi-people"></i>
+                  </div>
+                  <div class="ms-3">
+                    <div class="small text-gray-500">20 Juni 2025</div>
+                    <span
+                      >3 permohonan izin keramaian menunggu persetujuan</span
+                    >
+                  </div>
+                </a>
+                <a
+                  class="dropdown-item text-center small text-gray-500"
+                  href="#"
+                  >Tampilkan semua notifikasi</a
+                >
+              </div>
+            </li>
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="d-none d-lg-inline text-gray-600 me-2"
+                  >AKBP Ferdy Sambo</span
+                >
+                <img
+                  class="img-profile rounded-circle"
+                  src="../assets/img/kapolsek-avatar.jpg"
+                  width="32"
+                  height="32"
+                />
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-end shadow"
+                aria-labelledby="userDropdown"
+              >
+                <a class="dropdown-item" href="edit-profil.html">
+                  <i class="bi bi-person-fill me-2 text-gray-400"></i>
+                  Profil
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../index.html">
+                  <i class="bi bi-box-arrow-right me-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Edit Profil Kapolsek</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <!-- Profile Picture Card -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Foto Profil</h6>
+              </div>
+              <div class="card-body text-center">
+                <img
+                  src="../assets/img/kapolsek-avatar.jpg"
+                  alt="Foto Profil"
+                  class="profile-picture rounded-circle mb-3"
+                />
+                <div class="small font-italic text-muted mb-4">
+                  JPG atau PNG tidak lebih dari 5 MB
+                </div>
+                <button class="btn btn-primary btn-sm">
+                  <i class="bi bi-upload me-1"></i> Unggah Foto Baru
+                </button>
+                <button class="btn btn-outline-danger btn-sm ms-2">
+                  <i class="bi bi-trash me-1"></i> Hapus
+                </button>
+              </div>
+            </div>
+
+            <!-- Account Information -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                  Informasi Akun
+                </h6>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <label class="form-label">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="kapolsek_gantarang"
+                    readonly
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="kapolsek.gantarang@polri.go.id"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Terakhir Login</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="20 Juni 2025, 14:30 WIB"
+                    readonly
+                  />
+                </div>
+                <button class="btn btn-primary w-100">
+                  <i class="bi bi-key me-1"></i> Ganti Password
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <!-- Personal Information -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                  Informasi Pribadi
+                </h6>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Nama Lengkap</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="AKBP Ferdy Sambo"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Pangkat</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="Ajun Komisaris Besar Polisi"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label class="form-label">NIP</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="196906141994031001"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Jabatan</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="Kapolsek"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Satuan Kerja</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="Polsek Gantarang"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">No. Telepon</label>
+                      <input
+                        type="tel"
+                        class="form-control"
+                        value="081234567890"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Alamat</label>
+                    <textarea class="form-control" rows="3">
+Jl. Poros Makassar - Bulukumba, Kel. Gantarang, Kec. Gantarang, Kab. Bulukumba</textarea
+                    >
+                  </div>
+                </form>
+                <div class="card-footer text-end">
+                  <button class="btn btn-secondary me-2">
+                    <i class="bi bi-x-circle me-1"></i> Batal
+                  </button>
+                  <button class="btn btn-primary">
+                    <i class="bi bi-save me-1"></i> Simpan Perubahan
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Sidebar toggle functionality
+      document
+        .getElementById("openSidebar")
+        .addEventListener("click", function () {
+          document.getElementById("sidebar").classList.add("active");
+        });
+
+      document
+        .getElementById("closeSidebar")
+        .addEventListener("click", function () {
+          document.getElementById("sidebar").classList.remove("active");
+        });
+    </script>
+  </body>
+</html>

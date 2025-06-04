@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- Favicon -->
     <link rel="icon" href="../assets/img/favicon.ico" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body class="dashboard-page kapolsek-dashboard">
     <div class="dashboard-wrapper">
@@ -70,33 +72,6 @@
           </li>
           <li class="nav-item">
             <a
-              href="#approvalSubmenu"
-              data-bs-toggle="collapse"
-              class="nav-link collapsed"
-            >
-              <i class="bi bi-check2-all"></i>
-              <span>Persetujuan</span>
-              <span class="badge bg-danger ms-2">3</span>
-              <i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul class="collapse" id="approvalSubmenu">
-              <li>
-                <a href="#" class="nav-link">
-                  <i class="bi bi-people"></i>
-                  <span>Izin Keramaian</span>
-                  <span class="badge bg-danger ms-2">3</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link">
-                  <i class="bi bi-file-earmark-text"></i>
-                  <span>Surat Penting</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a
               href="#monitoringSubmenu"
               data-bs-toggle="collapse"
               class="nav-link collapsed"
@@ -107,19 +82,19 @@
             </a>
             <ul class="collapse" id="monitoringSubmenu">
               <li>
-                <a href="#" class="nav-link">
+                <a href="/kapolsek/skck.html" class="nav-link">
                   <i class="bi bi-card-checklist"></i>
                   <span>SKCK</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link">
+                <a href="/kapolsek/surat-kehilangan.html" class="nav-link">
                   <i class="bi bi-search"></i>
                   <span>Surat Kehilangan</span>
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link">
+                <a href="/kapolsek/ijin-keramaian.html" class="nav-link">
                   <i class="bi bi-people"></i>
                   <span>Izin Keramaian</span>
                 </a>
@@ -146,7 +121,12 @@
               <i class="bi bi-list"></i>
             </button>
             <div class="d-flex align-items-center">
-              <h4 class="mb-0 text-accent fw-bold">Laporan</h4>
+              <h4 class="mb-0 text-accent fw-bold d-none d-sm-block">
+                Dashboard Kapolsek
+              </h4>
+              <h5 class="mb-0 text-accent fw-bold d-block d-sm-none">
+                Dashboard
+              </h5>
             </div>
             <ul class="navbar-nav ms-auto">
               <li class="nav-item dropdown">
@@ -172,9 +152,25 @@
                     </div>
                     <div class="ms-3">
                       <div class="small text-gray-500">20 Juni 2025</div>
-                      <span
-                        >3 permohonan izin keramaian menunggu persetujuan</span
-                      >
+                      <span>3 permohonan izin keramaian baru diproses</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-success text-white">
+                      <i class="bi bi-file-earmark-bar-graph"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">19 Juni 2025</div>
+                      <span>Laporan bulanan persuratan telah tersedia</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="notification-icon bg-primary text-white">
+                      <i class="bi bi-calendar-event"></i>
+                    </div>
+                    <div class="ms-3">
+                      <div class="small text-gray-500">18 Juni 2025</div>
+                      <span>Pengingat: Rapat koordinasi besok pukul 09:00</span>
                     </div>
                   </a>
                   <a
@@ -208,7 +204,7 @@
                   class="dropdown-menu dropdown-menu-end shadow"
                   aria-labelledby="userDropdown"
                 >
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="edit-profil.html">
                     <i class="bi bi-person-fill me-2 text-gray-400"></i>
                     Profil
                   </a>
@@ -227,562 +223,369 @@
         <div class="container-fluid">
           <!-- Report Filter -->
           <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+              <h6 class="m-0 fw-bold">Filter Laporan</h6>
+            </div>
             <div class="card-body">
               <form class="row g-3">
-                <div class="col-md-3">
-                  <label class="form-label">Jenis Laporan</label>
+                <div class="col-md-4">
+                  <label class="form-label fw-bold">Jenis Laporan</label>
                   <select class="form-select">
-                    <option value="summary">Ringkasan Persuratan</option>
-                    <option value="detailed">Detail Persuratan</option>
+                    <option value="summary" selected>Ringkasan Bulanan</option>
                     <option value="performance">Kinerja Petugas</option>
-                    <option value="satisfaction">Kepuasan Masyarakat</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label">Periode</label>
-                  <select class="form-select">
-                    <option value="daily">Harian</option>
-                    <option value="weekly">Mingguan</option>
-                    <option value="monthly">Bulanan</option>
-                    <option value="yearly">Tahunan</option>
-                    <option value="custom">Kustom</option>
+                    <option value="types">Distribusi Jenis Surat</option>
+                    <option value="timeliness">Ketepatan Waktu</option>
                   </select>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label">Rentang Waktu</label>
-                  <div class="input-group">
-                    <input type="date" class="form-control" />
-                    <span class="input-group-text">s/d</span>
-                    <input type="date" class="form-control" />
-                  </div>
+                  <label class="form-label fw-bold">Periode Bulanan</label>
+                  <select class="form-select">
+                    <option value="current" selected>
+                      Bulan Ini (Juni 2025)
+                    </option>
+                    <option value="last">Bulan Lalu (Mei 2025)</option>
+                    <option value="jan">Januari 2025</option>
+                    <option value="feb">Februari 2025</option>
+                    <option value="mar">Maret 2025</option>
+                    <option value="apr">April 2025</option>
+                  </select>
                 </div>
-                <div class="col-md-2">
-                  <label class="form-label">&nbsp;</label>
-                  <button type="submit" class="btn btn-primary d-block w-100">
-                    <i class="bi bi-search me-2"></i>Tampilkan
+                <div class="col-md-4 d-flex align-items-end">
+                  <button type="submit" class="btn btn-primary w-100">
+                    <i class="bi bi-funnel-fill me-2"></i>Filter Laporan
                   </button>
                 </div>
               </form>
             </div>
           </div>
 
-          <!-- Report Content -->
-          <div class="card mb-4">
+          <!-- Report Summary Cards -->
+          <div class="row mb-4">
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-primary h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <h6 class="text-primary fw-bold">TOTAL SURAT</h6>
+                      <h2 class="mb-0 fw-bold">128</h2>
+                      <span class="text-success small">
+                        <i class="bi bi-arrow-up"></i> 12% dari bulan lalu
+                      </span>
+                    </div>
+                    <div class="icon-circle bg-primary text-white">
+                      <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-success h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <h6 class="text-success fw-bold">SELESAI</h6>
+                      <h2 class="mb-0 fw-bold">111</h2>
+                      <span class="text-success small">
+                        <i class="bi bi-arrow-up"></i> 8% dari bulan lalu
+                      </span>
+                    </div>
+                    <div class="icon-circle bg-success text-white">
+                      <i class="bi bi-check-circle"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-warning h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <h6 class="text-warning fw-bold">DIPROSES</h6>
+                      <h2 class="mb-0 fw-bold">12</h2>
+                      <span class="text-danger small">
+                        <i class="bi bi-arrow-up"></i> 3 lebih banyak
+                      </span>
+                    </div>
+                    <div class="icon-circle bg-warning text-white">
+                      <i class="bi bi-hourglass-split"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-start-danger h-100">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <h6 class="text-danger fw-bold">DITOLAK</h6>
+                      <h2 class="mb-0 fw-bold">5</h2>
+                      <span class="text-success small">
+                        <i class="bi bi-arrow-down"></i> 2 lebih sedikit
+                      </span>
+                    </div>
+                    <div class="icon-circle bg-danger text-white">
+                      <i class="bi bi-x-circle"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="row mb-4">
+            <!-- distribusi jenis surat-->
+            <div class="col-xl-6">
+              <div class="card shadow mb-4">
+                <div
+                  class="card-header py-3 d-flex justify-content-between align-items-center"
+                >
+                  <h6 class="m-0 fw-bold text-primary">
+                    Distribusi Jenis Surat
+                  </h6>
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-sm btn-link dropdown-toggle"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                    >
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li>
+                        <a class="dropdown-item" href="#">Download Data</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Cetak Grafik</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="jenisSuratChart"></canvas>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="me-3">
+                      <i class="fas fa-circle text-primary"></i> SKCK
+                    </span>
+                    <span class="me-3">
+                      <i class="fas fa-circle text-success"></i> Kehilangan
+                    </span>
+                    <span class="me-3">
+                      <i class="fas fa-circle text-info"></i> Keramaian
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- trend bulanan -->
+            <div class="col-xl-6">
+              <div class="card shadow mb-4">
+                <div
+                  class="card-header py-3 d-flex justify-content-between align-items-center"
+                >
+                  <h6 class="m-0 fw-bold text-primary">Trend Bulanan</h6>
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-sm btn-link dropdown-toggle"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                    >
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li>
+                        <a class="dropdown-item" href="#">Download Data</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Cetak Grafik</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart-area">
+                    <canvas id="trendBulananChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Detailed Report -->
+          <div class="card shadow mb-4">
             <div
-              class="card-header py-3 d-flex justify-content-between align-items-center"
+              class="card-header py-3 d-flex justify-content-between align-items-center bg-primary text-white"
             >
-              <h6 class="m-0 fw-bold text-primary">
-                Laporan Ringkasan Persuratan
-              </h6>
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-primary">
-                  <i class="bi bi-download me-2"></i>Export Excel
+              <h6 class="m-0 fw-bold">Detail Laporan Bulanan</h6>
+              <div>
+                <button class="btn btn-sm btn-light me-2">
+                  <i class="bi bi-file-excel me-1"></i> Excel
                 </button>
-                <button type="button" class="btn btn-sm btn-outline-primary">
-                  <i class="bi bi-file-pdf me-2"></i>Export PDF
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-primary">
-                  <i class="bi bi-printer me-2"></i>Print
+                <button class="btn btn-sm btn-light">
+                  <i class="bi bi-file-pdf me-1"></i> PDF
                 </button>
               </div>
             </div>
             <div class="card-body">
-              <!-- Summary Statistics -->
-              <div class="row mb-4">
-                <div class="col-md-3 mb-4">
-                  <div class="card border-start-primary h-100 py-2">
-                    <div class="card-body">
-                      <div class="row align-items-center">
-                        <div class="col">
-                          <div
-                            class="text-xs fw-bold text-primary text-uppercase mb-1"
-                          >
-                            Total Surat
-                          </div>
-                          <div class="h5 mb-0 fw-bold text-gray-800">128</div>
-                          <div class="small text-success mt-2">
-                            <i class="bi bi-arrow-up"></i> 12% dari bulan lalu
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i
-                            class="bi bi-file-earmark-text text-gray-300 fs-1"
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                  <div class="card border-start-success h-100 py-2">
-                    <div class="card-body">
-                      <div class="row align-items-center">
-                        <div class="col">
-                          <div
-                            class="text-xs fw-bold text-success text-uppercase mb-1"
-                          >
-                            Selesai
-                          </div>
-                          <div class="h5 mb-0 fw-bold text-gray-800">111</div>
-                          <div class="small text-success mt-2">
-                            <i class="bi bi-arrow-up"></i> 8% dari bulan lalu
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i class="bi bi-check-circle text-gray-300 fs-1"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                  <div class="card border-start-warning h-100 py-2">
-                    <div class="card-body">
-                      <div class="row align-items-center">
-                        <div class="col">
-                          <div
-                            class="text-xs fw-bold text-warning text-uppercase mb-1"
-                          >
-                            Dalam Proses
-                          </div>
-                          <div class="h5 mb-0 fw-bold text-gray-800">12</div>
-                          <div class="small text-danger mt-2">
-                            <i class="bi bi-arrow-up"></i> 3 lebih banyak
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i
-                            class="bi bi-hourglass-split text-gray-300 fs-1"
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                  <div class="card border-start-danger h-100 py-2">
-                    <div class="card-body">
-                      <div class="row align-items-center">
-                        <div class="col">
-                          <div
-                            class="text-xs fw-bold text-danger text-uppercase mb-1"
-                          >
-                            Ditolak
-                          </div>
-                          <div class="h5 mb-0 fw-bold text-gray-800">5</div>
-                          <div class="small text-success mt-2">
-                            <i class="bi bi-arrow-down"></i> 2 lebih sedikit
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i class="bi bi-x-circle text-gray-300 fs-1"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Jenis Surat</th>
+                      <th class="text-end">Total</th>
+                      <th class="text-end">Selesai</th>
+                      <th class="text-end">Diproses</th>
+                      <th class="text-end">Ditolak</th>
+                      <th class="text-end">Rata Waktu</th>
+                      <th class="text-end">Kepuasan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>SKCK</td>
+                      <td class="text-end">58</td>
+                      <td class="text-end">50</td>
+                      <td class="text-end">6</td>
+                      <td class="text-end">2</td>
+                      <td class="text-end">2.3 hari</td>
+                      <td class="text-end">
+                        <span class="badge bg-success">85%</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Surat Kehilangan</td>
+                      <td class="text-end">45</td>
+                      <td class="text-end">40</td>
+                      <td class="text-end">4</td>
+                      <td class="text-end">1</td>
+                      <td class="text-end">1.5 hari</td>
+                      <td class="text-end">
+                        <span class="badge bg-success">90%</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Izin Keramaian</td>
+                      <td class="text-end">25</td>
+                      <td class="text-end">21</td>
+                      <td class="text-end">2</td>
+                      <td class="text-end">2</td>
+                      <td class="text-end">3.2 hari</td>
+                      <td class="text-end">
+                        <span class="badge bg-success">80%</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot class="table-group-divider">
+                    <tr class="fw-bold">
+                      <td>TOTAL</td>
+                      <td class="text-end">128</td>
+                      <td class="text-end">111</td>
+                      <td class="text-end">12</td>
+                      <td class="text-end">5</td>
+                      <td class="text-end">2.3 hari</td>
+                      <td class="text-end">
+                        <span class="badge bg-success">85%</span>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
               </div>
+            </div>
+          </div>
 
-              <!-- Charts -->
-              <div class="row mb-4">
-                <div class="col-lg-8">
-                  <div class="card mb-4">
-                    <div class="card-header py-3">
-                      <h6 class="m-0 fw-bold text-primary">
-                        Tren Pengajuan Surat
-                      </h6>
-                    </div>
-                    <div class="card-body">
-                      <div class="chart-area">
-                        <img
-                          src="../assets/img/report-trend-chart.png"
-                          alt="Tren Pengajuan"
-                          class="img-fluid"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="card mb-4">
-                    <div class="card-header py-3">
-                      <h6 class="m-0 fw-bold text-primary">
-                        Distribusi Jenis Surat
-                      </h6>
-                    </div>
-                    <div class="card-body">
-                      <div class="chart-pie mb-4">
-                        <img
-                          src="../assets/img/report-pie-chart.png"
-                          alt="Distribusi Surat"
-                          class="img-fluid"
-                        />
-                      </div>
-                      <div class="mt-4 text-center small">
-                        <span class="me-2">
-                          <i class="bi bi-circle-fill text-primary"></i> SKCK
-                          (45%)
-                        </span>
-                        <span class="me-2">
-                          <i class="bi bi-circle-fill text-success"></i> Surat
-                          Kehilangan (35%)
-                        </span>
-                        <span>
-                          <i class="bi bi-circle-fill text-info"></i> Izin
-                          Keramaian (20%)
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <!-- Performance by Officer -->
+          <div class="card shadow mb-4">
+            <div
+              class="card-header py-3 d-flex justify-content-between align-items-center"
+            >
+              <h6 class="m-0 fw-bold text-primary">Kinerja Petugas</h6>
+              <div class="dropdown">
+                <button
+                  class="btn btn-sm btn-link dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#">Download Data</a></li>
+                  <li><a class="dropdown-item" href="#">Cetak Laporan</a></li>
+                </ul>
               </div>
-
-              <!-- Detailed Report -->
-              <div class="card mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 fw-bold text-primary">
-                    Detail Laporan Persuratan
-                  </h6>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>Jenis Surat</th>
-                          <th>Total</th>
-                          <th>Selesai</th>
-                          <th>Dalam Proses</th>
-                          <th>Ditolak</th>
-                          <th>Rata-rata Waktu</th>
-                          <th>Tingkat Kepuasan</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>SKCK</td>
-                          <td>58</td>
-                          <td>50</td>
-                          <td>6</td>
-                          <td>2</td>
-                          <td>2.3 hari</td>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div
-                                class="progress flex-grow-1"
-                                style="height: 8px"
-                              >
-                                <div
-                                  class="progress-bar bg-success"
-                                  role="progressbar"
-                                  style="width: 85%"
-                                ></div>
-                              </div>
-                              <span class="ms-2">85%</span>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Surat Kehilangan</td>
-                          <td>45</td>
-                          <td>40</td>
-                          <td>4</td>
-                          <td>1</td>
-                          <td>1.5 hari</td>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div
-                                class="progress flex-grow-1"
-                                style="height: 8px"
-                              >
-                                <div
-                                  class="progress-bar bg-success"
-                                  role="progressbar"
-                                  style="width: 90%"
-                                ></div>
-                              </div>
-                              <span class="ms-2">90%</span>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Izin Keramaian</td>
-                          <td>25</td>
-                          <td>21</td>
-                          <td>2</td>
-                          <td>2</td>
-                          <td>3.2 hari</td>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div
-                                class="progress flex-grow-1"
-                                style="height: 8px"
-                              >
-                                <div
-                                  class="progress-bar bg-success"
-                                  role="progressbar"
-                                  style="width: 80%"
-                                ></div>
-                              </div>
-                              <span class="ms-2">80%</span>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                      <tfoot class="table-group-divider">
-                        <tr class="fw-bold">
-                          <td>Total</td>
-                          <td>128</td>
-                          <td>111</td>
-                          <td>12</td>
-                          <td>5</td>
-                          <td>2.3 hari</td>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div
-                                class="progress flex-grow-1"
-                                style="height: 8px"
-                              >
-                                <div
-                                  class="progress-bar bg-success"
-                                  role="progressbar"
-                                  style="width: 85%"
-                                ></div>
-                              </div>
-                              <span class="ms-2">85%</span>
-                            </div>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Performance Report -->
-              <div class="card mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 fw-bold text-primary">
-                    Laporan Kinerja Petugas
-                  </h6>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>Nama Petugas</th>
-                          <th>Total Surat</th>
-                          <th>Selesai</th>
-                          <th>Dalam Proses</th>
-                          <th>Rata-rata Waktu</th>
-                          <th>Tingkat Kepuasan</th>
-                          <th>Performa</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Siti Nurhalisa Arif</td>
-                          <td>53</td>
-                          <td>48</td>
-                          <td>5</td>
-                          <td>1.8 hari</td>
-                          <td>92%</td>
-                          <td>
-                            <div class="progress" style="height: 8px">
-                              <div
-                                class="progress-bar bg-success"
-                                role="progressbar"
-                                style="width: 92%"
-                              ></div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Siti Nurhalisa Arif</td>
-                          <td>47</td>
-                          <td>42</td>
-                          <td>5</td>
-                          <td>2.1 hari</td>
-                          <td>87%</td>
-                          <td>
-                            <div class="progress" style="height: 8px">
-                              <div
-                                class="progress-bar bg-success"
-                                role="progressbar"
-                                style="width: 87%"
-                              ></div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Siti Nurhalisa Arif</td>
-                          <td>28</td>
-                          <td>21</td>
-                          <td>7</td>
-                          <td>2.5 hari</td>
-                          <td>75%</td>
-                          <td>
-                            <div class="progress" style="height: 8px">
-                              <div
-                                class="progress-bar bg-warning"
-                                role="progressbar"
-                                style="width: 75%"
-                              ></div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Satisfaction Report -->
-              <div class="card">
-                <div class="card-header py-3">
-                  <h6 class="m-0 fw-bold text-primary">
-                    Laporan Kepuasan Masyarakat
-                  </h6>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="satisfaction-summary text-center mb-4">
-                        <div class="satisfaction-rating">
-                          <span class="display-4 fw-bold">4.7</span>
-                          <div class="rating-stars text-warning">
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                          </div>
-                          <p class="text-muted">Berdasarkan 78 ulasan</p>
-                        </div>
-                      </div>
-                      <div class="satisfaction-metrics">
-                        <div
-                          class="d-flex justify-content-between align-items-center mb-1"
-                        >
-                          <span>Kecepatan Pelayanan</span>
-                          <span class="fw-bold"
-                            >4.5
-                            <i class="bi bi-star-fill text-warning small"></i
-                          ></span>
-                        </div>
-                        <div class="progress mb-3" style="height: 8px">
-                          <div
-                            class="progress-bar bg-success"
-                            role="progressbar"
-                            style="width: 90%"
-                          ></div>
-                        </div>
-                        <div
-                          class="d-flex justify-content-between align-items-center mb-1"
-                        >
-                          <span>Kemudahan Proses</span>
-                          <span class="fw-bold"
-                            >4.8
-                            <i class="bi bi-star-fill text-warning small"></i
-                          ></span>
-                        </div>
-                        <div class="progress mb-3" style="height: 8px">
-                          <div
-                            class="progress-bar bg-success"
-                            role="progressbar"
-                            style="width: 96%"
-                          ></div>
-                        </div>
-                        <div
-                          class="d-flex justify-content-between align-items-center mb-1"
-                        >
-                          <span>Keramahan Petugas</span>
-                          <span class="fw-bold"
-                            >4.9
-                            <i class="bi bi-star-fill text-warning small"></i
-                          ></span>
-                        </div>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Petugas</th>
+                      <th class="text-end">Total Surat</th>
+                      <th class="text-end">Selesai</th>
+                      <th class="text-end">Rata Waktu</th>
+                      <th class="text-end">Tingkat Penyelesaian</th>
+                      <th class="text-end">Kepuasan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Ijalll</td>
+                      <td class="text-end">53</td>
+                      <td class="text-end">50</td>
+                      <td class="text-end">1.8 hari</td>
+                      <td>
                         <div class="progress" style="height: 8px">
                           <div
                             class="progress-bar bg-success"
-                            role="progressbar"
-                            style="width: 98%"
+                            style="width: 92%"
                           ></div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="satisfaction-comments">
-                        <h6 class="fw-bold mb-3">Ulasan Terbaru</h6>
-                        <div class="comment-item mb-3 pb-3 border-bottom">
+                      </td>
+                      <td class="text-end">
+                        <span class="badge bg-success">92%</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Ferdy Sambo</td>
+                      <td class="text-end">47</td>
+                      <td class="text-end">40</td>
+                      <td class="text-end">2.1 hari</td>
+                      <td>
+                        <div class="progress" style="height: 8px">
                           <div
-                            class="d-flex justify-content-between align-items-center mb-2"
-                          >
-                            <div>
-                              <span class="fw-bold">Siti Nurhalisa Arif</span>
-                              <div class="text-warning small">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                              </div>
-                            </div>
-                            <small class="text-muted">20 Juni 2025</small>
-                          </div>
-                          <p class="mb-0">
-                            "Pelayanan sangat cepat dan petugas ramah. Proses
-                            pengajuan SKCK sangat mudah dengan sistem online."
-                          </p>
+                            class="progress-bar bg-success"
+                            style="width: 87%"
+                          ></div>
                         </div>
-                        <div class="comment-item mb-3 pb-3 border-bottom">
+                      </td>
+                      <td class="text-end">
+                        <span class="badge bg-success">87%</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Eci china</td>
+                      <td class="text-end">28</td>
+                      <td class="text-end">25</td>
+                      <td class="text-end">2.5 hari</td>
+                      <td>
+                        <div class="progress" style="height: 8px">
                           <div
-                            class="d-flex justify-content-between align-items-center mb-2"
-                          >
-                            <div>
-                              <span class="fw-bold">Siti Nurhalisa Arif</span>
-                              <div class="text-warning small">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star"></i>
-                              </div>
-                            </div>
-                            <small class="text-muted">19 Juni 2025</small>
-                          </div>
-                          <p class="mb-0">
-                            "Sistem online sangat membantu, tidak perlu antri
-                            lama di kantor. Namun waktu penyelesaian bisa lebih
-                            cepat."
-                          </p>
+                            class="progress-bar bg-info"
+                            style="width: 75%"
+                          ></div>
                         </div>
-                        <div class="comment-item">
-                          <div
-                            class="d-flex justify-content-between align-items-center mb-2"
-                          >
-                            <div>
-                              <span class="fw-bold">Siti Nurhalisa Arif</span>
-                              <div class="text-warning small">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                              </div>
-                            </div>
-                            <small class="text-muted">18 Juni 2025</small>
-                          </div>
-                          <p class="mb-0">
-                            "Prosedur jelas dan mudah diikuti. Petugas sangat
-                            membantu dalam proses pengajuan surat."
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                      </td>
+                      <td class="text-end">
+                        <span class="badge bg-info">75%</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -805,5 +608,75 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="../assets/js/script.js"></script>
+    <script>
+      // Pie Chart
+      var ctx = document.getElementById("jenisSuratChart");
+      var jenisSuratChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["SKCK", "Surat Kehilangan", "Izin Keramaian"],
+          datasets: [
+            {
+              data: [58, 45, 25],
+              backgroundColor: ["#4e73df", "#1cc88a", "#36b9cc"],
+              hoverBackgroundColor: ["#2e59d9", "#17a673", "#2c9faf"],
+              hoverBorderColor: "rgba(234, 236, 244, 1)",
+            },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+
+      // Area Chart
+      var ctx2 = document.getElementById("trendBulananChart");
+      var trendBulananChart = new Chart(ctx2, {
+        type: "line",
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"],
+          datasets: [
+            {
+              label: "Total Surat",
+              lineTension: 0.3,
+              backgroundColor: "rgba(78, 115, 223, 0.05)",
+              borderColor: "rgba(78, 115, 223, 1)",
+              pointRadius: 3,
+              pointBackgroundColor: "rgba(78, 115, 223, 1)",
+              pointBorderColor: "rgba(78, 115, 223, 1)",
+              pointHoverRadius: 3,
+              pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+              pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+              pointHitRadius: 10,
+              pointBorderWidth: 2,
+              data: [90, 95, 110, 105, 115, 128],
+            },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              ticks: {
+                callback: function (value) {
+                  return value + " surat";
+                },
+              },
+            },
+          },
+        },
+      });
+    </script>
   </body>
 </html>
