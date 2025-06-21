@@ -18,6 +18,32 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- Favicon -->
     <link rel="icon" href="../assets/img/favicon.ico" />
+
+    <style>
+      .document-upload-container {
+        border: 2px dashed #adb5bd;
+        transition: all 0.3s;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .document-upload-container:hover {
+        border-color: #0d6efd;
+        background-color: #f8f9fa;
+      }
+
+      .dropzone {
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .dz-message {
+        text-align: center;
+        padding: 2em;
+      }
+    </style>
   </head>
   <body class="dashboard-page admin-dashboard">
     <div class="dashboard-wrapper">
@@ -260,6 +286,7 @@
                         >
                       </td>
                       <td>
+                        <!-- button setuju verifikasi -->
                         <button
                           class="btn btn-sm btn-success me-1"
                           data-bs-toggle="modal"
@@ -267,6 +294,8 @@
                         >
                           <i class="bi bi-check-lg"></i>
                         </button>
+
+                        <!-- button tolak -->
                         <button
                           class="btn btn-sm btn-danger me-1"
                           data-bs-toggle="modal"
@@ -274,6 +303,8 @@
                         >
                           <i class="bi bi-x-lg"></i>
                         </button>
+
+                        <!-- button view detail -->
                         <button
                           class="btn btn-sm btn-info"
                           data-bs-toggle="modal"
@@ -318,6 +349,7 @@
                         </button>
                       </td>
                     </tr>
+
                     <!-- Surat Ijin Keramaian Row -->
                     <tr>
                       <td>SRT-2025060012</td>
@@ -383,12 +415,148 @@
           </div>
         </div>
 
-        <!-- Verification Modal -->
+        <!-- Verification Modal with Final Document Upload -->
         <div class="modal fade" id="verificationModal" tabindex="-1">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Verifikasi Pengajuan Dokumen</h5>
+                <button
+                  type="button"
+                  class="btn-close btn-close-white"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form id="verificationForm">
+                  <!-- Verification Notes -->
+                  <div class="mb-4">
+                    <label class="form-label fw-bold">Catatan Verifikasi</label>
+                    <textarea
+                      class="form-control"
+                      rows="3"
+                      placeholder="Berikan catatan verifikasi (opsional)"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <!-- Document Upload Section -->
+                  <div class="mb-4">
+                    <label class="form-label fw-bold"
+                      >Upload Dokumen Final</label
+                    >
+                    <div class="alert alert-info">
+                      <i class="bi bi-info-circle-fill"></i> Upload dokumen yang
+                      sudah ditandatangani dan distempel dalam format PDF
+                    </div>
+
+                    <div
+                      class="document-upload-container border rounded p-4 text-center"
+                    >
+                      <div id="documentUploadArea" class="dropzone h-100">
+                        <div class="dz-message needsclick">
+                          <i
+                            class="bi bi-file-earmark-pdf fs-1 text-primary"
+                          ></i>
+                          <h5 class="my-3">
+                            Seret file PDF kesini atau klik untuk upload
+                          </h5>
+                          <p class="text-muted">Format: PDF (maks. 5MB)</p>
+                          <button type="button" class="btn btn-primary mt-2">
+                            <i class="bi bi-upload"></i> Pilih File
+                          </button>
+                        </div>
+                      </div>
+                      <div id="documentPreview" class="d-none mt-3">
+                        <div
+                          class="d-flex align-items-center justify-content-between bg-light p-3 rounded"
+                        >
+                          <div>
+                            <i
+                              class="bi bi-file-earmark-pdf-fill text-danger fs-4"
+                            ></i>
+                            <span id="documentName" class="ms-2 fw-bold"
+                              >document.pdf</span
+                            >
+                          </div>
+                          <div>
+                            <button
+                              type="button"
+                              class="btn btn-sm btn-outline-secondary me-2"
+                            >
+                              <i class="bi bi-eye"></i> Pratinjau
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-sm btn-outline-danger"
+                              id="removeDocument"
+                            >
+                              <i class="bi bi-trash"></i> Hapus
+                            </button>
+                          </div>
+                        </div>
+                        <div class="mt-2 text-start">
+                          <small class="text-muted"
+                            >Dokumen ini akan langsung tersedia untuk diunduh
+                            oleh pemohon setelah verifikasi</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Verification Info -->
+                  <div class="row mb-3">
+                    <div class="col-md-6">
+                      <label class="form-label fw-bold">Petugas</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="Nama petugas"
+                        readonly
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label fw-bold"
+                        >Tanggal Verifikasi</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="verificationDate"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  <i class="bi bi-x-circle"></i> Batal
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  id="verifyButton"
+                  disabled
+                >
+                  <i class="bi bi-check-circle"></i> Selesaikan Verifikasi
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PDF Preview Modal -->
+        <div class="modal fade" id="pdfPreviewModal" tabindex="-1">
+          <div class="modal-dialog modal-xl">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Verifikasi Pengajuan</h5>
+                <h5 class="modal-title">Pratinjau Dokumen</h5>
                 <button
                   type="button"
                   class="btn-close"
@@ -396,26 +564,12 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <form>
-                  <div class="mb-3">
-                    <label class="form-label">Catatan Verifikasi</label>
-                    <textarea
-                      class="form-control"
-                      rows="3"
-                      placeholder="Tambahkan catatan jika diperlukan"
-                    ></textarea>
-                  </div>
-                  <div class="form-check mb-3">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="sendNotification"
-                    />
-                    <label class="form-check-label" for="sendNotification">
-                      Kirim notifikasi ke pemohon
-                    </label>
-                  </div>
-                </form>
+                <div id="pdfViewer" style="height: 70vh">
+                  <iframe
+                    id="pdfFrame"
+                    style="width: 100%; height: 100%; border: none"
+                  ></iframe>
+                </div>
               </div>
               <div class="modal-footer">
                 <button
@@ -423,10 +577,14 @@
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
                 >
-                  Batal
+                  Tutup
                 </button>
-                <button type="button" class="btn btn-success">
-                  Verifikasi
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="downloadFinalDoc"
+                >
+                  <i class="bi bi-download"></i> Unduh Dokumen
                 </button>
               </div>
             </div>
@@ -597,6 +755,7 @@
                           </tr>
                         </thead>
                         <tbody>
+                          <!-- file ktp -->
                           <tr>
                             <td>KTP.jpg</td>
                             <td>Image/JPEG</td>
@@ -607,8 +766,34 @@
                               </button>
                             </td>
                           </tr>
+
+                          <!-- file pas foto -->
                           <tr>
                             <td>Pas_Foto.jpg</td>
+                            <td>Image/JPEG</td>
+                            <td>800 KB</td>
+                            <td>
+                              <button class="btn btn-sm btn-primary">
+                                <i class="bi bi-eye me-1"></i>Lihat
+                              </button>
+                            </td>
+                          </tr>
+
+                          <!-- file kartu keluarga -->
+                          <tr>
+                            <td>kartu_keluarga.jpg</td>
+                            <td>Image/JPEG</td>
+                            <td>800 KB</td>
+                            <td>
+                              <button class="btn btn-sm btn-primary">
+                                <i class="bi bi-eye me-1"></i>Lihat
+                              </button>
+                            </td>
+                          </tr>
+
+                          <!-- file ijazah terakhir -->
+                          <tr>
+                            <td>ijazah terakhir.jpg</td>
                             <td>Image/JPEG</td>
                             <td>800 KB</td>
                             <td>
@@ -624,12 +809,8 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Tutup
+                <button type="button" class="btn btn-success" id="downloadSkck">
+                  <i class="bi bi-file-earmark-pdf me-1"></i>Download SKCK
                 </button>
               </div>
             </div>
@@ -770,12 +951,8 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Tutup
+                <button type="button" class="btn btn-success" id="downloadSkck">
+                  <i class="bi bi-file-earmark-pdf me-1"></i>Download SKCK
                 </button>
               </div>
             </div>
@@ -947,12 +1124,8 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Tutup
+                <button type="button" class="btn btn-success" id="downloadSkck">
+                  <i class="bi bi-file-earmark-pdf me-1"></i>Download SKCK
                 </button>
               </div>
             </div>
@@ -976,5 +1149,394 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="../assets/js/script.js"></script>
+
+    <!-- QR Code Generator -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const signatureUpload = document.getElementById("signatureUpload");
+        const signaturePreview = document.getElementById("signaturePreview");
+        const signatureUploadArea = document.getElementById(
+          "signatureUploadArea"
+        );
+        const removeSignatureBtn = document.getElementById("removeSignature");
+        const verifyButton = document.getElementById("verifyButton");
+
+        // Handle drag and drop untuk upload tanda tangan
+        signatureUploadArea.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          signatureUploadArea.parentElement.style.borderColor = "#0d6efd";
+          signatureUploadArea.parentElement.style.backgroundColor = "#f0f7ff";
+        });
+
+        signatureUploadArea.addEventListener("dragleave", () => {
+          signatureUploadArea.parentElement.style.borderColor = "#dee2e6";
+          signatureUploadArea.parentElement.style.backgroundColor = "#f8f9fa";
+        });
+
+        signatureUploadArea.addEventListener("drop", (e) => {
+          e.preventDefault();
+          signatureUploadArea.parentElement.style.borderColor = "#dee2e6";
+          signatureUploadArea.parentElement.style.backgroundColor = "#f8f9fa";
+
+          if (e.dataTransfer.files.length) {
+            signatureUpload.files = e.dataTransfer.files;
+            handleSignatureUpload(e.dataTransfer.files[0]);
+          }
+        });
+
+        // Handle click upload
+        signatureUpload.addEventListener("change", function () {
+          if (this.files && this.files[0]) {
+            handleSignatureUpload(this.files[0]);
+          }
+        });
+
+        // Fungsi untuk menangani upload tanda tangan
+        function handleSignatureUpload(file) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            signaturePreview.src = e.target.result;
+            signaturePreview.classList.remove("d-none");
+            signatureUploadArea.classList.add("d-none");
+
+            // Generate QR code otomatis setelah upload
+            generateQRCode();
+
+            // Aktifkan tombol verifikasi
+            verifyButton.disabled = false;
+          };
+
+          reader.readAsDataURL(file);
+        }
+
+        // Fungsi untuk generate QR Code
+        function generateQRCode() {
+          const qrPlaceholder = document.getElementById("qrPlaceholder");
+          const qrCodeDiv = document.getElementById("qrcode");
+
+          // Sembunyikan placeholder dan tampilkan QR code
+          qrPlaceholder.classList.add("d-none");
+          qrCodeDiv.classList.remove("d-none");
+
+          // Clear previous QR code
+          qrCodeDiv.innerHTML = "";
+
+          // Generate unique ID untuk QR code
+          const timestamp = Date.now();
+          const randomId = Math.floor(Math.random() * 10000);
+          const verificationId = `VER-${timestamp}-${randomId}`;
+
+          // Data yang akan di-encode dalam QR code
+          const qrData = {
+            id: verificationId,
+            type: "VERIFICATION",
+            timestamp: new Date().toISOString(),
+            status: "VERIFIED",
+          };
+
+          // Generate QR Code dengan metode yang benar
+          new QRCode(qrCodeDiv, {
+            text: JSON.stringify(qrData),
+            width: 180,
+            height: 180,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.M,
+          });
+
+          // Simpan verification ID untuk keperluan lain
+          qrCodeDiv.setAttribute("data-verification-id", verificationId);
+        }
+
+        // Tombol hapus tanda tangan
+        removeSignatureBtn.addEventListener("click", function () {
+          signaturePreview.src = "";
+          signaturePreview.classList.add("d-none");
+          signatureUploadArea.classList.remove("d-none");
+          document.getElementById("signatureUpload").value = "";
+
+          // Reset QR code area
+          document.getElementById("qrPlaceholder").classList.remove("d-none");
+          document.getElementById("qrcode").classList.add("d-none");
+          document.getElementById("qrcode").innerHTML = "";
+
+          verifyButton.disabled = true;
+        });
+
+        // Handle verifikasi
+        verifyButton.addEventListener("click", function () {
+          const verificationId = document
+            .getElementById("qrcode")
+            .getAttribute("data-verification-id");
+          const notification =
+            document.getElementById("sendNotification").checked;
+
+          // Simulasi proses verifikasi
+          verifyButton.innerHTML =
+            '<span class="spinner-border spinner-border-sm me-2"></span>Memproses...';
+          verifyButton.disabled = true;
+
+          setTimeout(() => {
+            alert(
+              `Verifikasi berhasil!\nID Verifikasi: ${verificationId}\nNotifikasi: ${
+                notification ? "Akan dikirim" : "Tidak dikirim"
+              }`
+            );
+
+            // Reset button
+            verifyButton.innerHTML = "Verifikasi";
+            verifyButton.disabled = false;
+
+            // Close modal
+            const modal = bootstrap.Modal.getInstance(
+              document.getElementById("verificationModal")
+            );
+            modal.hide();
+          }, 2000);
+        });
+      });
+    </script>
+
+    <!-- logika donwload file -->
+    <script>
+      document
+        .getElementById("downloadSkck")
+        .addEventListener("click", function () {
+          // Data dari modal
+          const data = {
+            noSurat: "RCK/95/I/2025/INTELKAM",
+            nama: "Budi Santoso",
+            tempatLahir: "Bulukumba",
+            tglLahir: "14 Juli 1999",
+            sukuBangsa: "Bugis/Indonesia",
+            agama: "Islam",
+            pekerjaan: "Belum ada/tidak bekerja",
+            keperluan: "Melamar Pekerjaan",
+            alamat: "Jl. Pahlawan No. 123, Gantarang",
+            jenisKelamin: "Laki-laki",
+            nik: "1234567890123456",
+            tanggal: "20 Juni 2025",
+          };
+
+          const doc = new jsPDF();
+
+          // Header
+          doc.setFont("helvetica", "bold");
+          doc.setFontSize(12);
+          doc.text(
+            "KEPOLISIAN DAERAH SULAWESI SELATAN",
+            105,
+            15,
+            null,
+            null,
+            "center"
+          );
+          doc.text("RESORT BULUKUMBA", 105, 20, null, null, "center");
+          doc.text("SEKTOR GANTARANG", 105, 25, null, null, "center");
+
+          doc.setFontSize(10);
+          doc.text(
+            "Jalan H. Andi Sultan Daeng Raja No.32 Ponre",
+            105,
+            30,
+            null,
+            null,
+            "center"
+          );
+
+          // Garis pemisah
+          doc.line(20, 35, 190, 35);
+
+          // Judul Surat
+          doc.setFontSize(14);
+          doc.text(
+            "REKOMENDASI CATATAN KRIMINAL",
+            105,
+            45,
+            null,
+            null,
+            "center"
+          );
+          doc.setFontSize(12);
+          doc.text("Nomor : " + data.noSurat, 105, 55, null, null, "center");
+
+          // Isi Surat
+          doc.setFontSize(11);
+          doc.text(
+            "1. Berdasarkan Catatan tentang pelaku-pelaku Kriminal yang ada pada Intelkam bersama ini dijelaskan",
+            20,
+            65
+          );
+          doc.text("sebagai berikut :", 20, 70);
+
+          // Data Pemohon
+          const startY = 80;
+          doc.text("Nama", 20, startY);
+          doc.text(": " + data.nama, 60, startY);
+
+          doc.text("Tempat dan Tanggal Lahir", 20, startY + 10);
+          doc.text(
+            ": " + data.tempatLahir + ", " + data.tglLahir,
+            60,
+            startY + 10
+          );
+
+          doc.text("Suku/Bangsa", 20, startY + 20);
+          doc.text(": " + data.sukuBangsa, 60, startY + 20);
+
+          doc.text("Agama", 20, startY + 30);
+          doc.text(": " + data.agama, 60, startY + 30);
+
+          doc.text("Pekerjaan", 20, startY + 40);
+          doc.text(": " + data.pekerjaan, 60, startY + 40);
+
+          doc.text("Maksud dan Tujuan", 20, startY + 50);
+          doc.text(": " + data.keperluan, 60, startY + 50);
+
+          doc.text("Alamat Sekarang", 20, startY + 60);
+          doc.text(": " + data.alamat, 60, startY + 60);
+
+          doc.text("Jenis Kelamin", 20, startY + 70);
+          doc.text(": " + data.jenisKelamin, 60, startY + 70);
+
+          doc.text("No. Kartu Tanda Penduduk", 20, startY + 80);
+          doc.text(": " + data.nik, 60, startY + 80);
+
+          // Catatan Kriminal
+          doc.text("a. Tidak/Sedang— *)", 30, startY + 95);
+          doc.text("b. Pernah/Tidak *)", 30, startY + 100);
+          doc.text("c. Residevice *)", 30, startY + 105);
+
+          // Penutup
+          doc.text(
+            "2. Demikian untuk dipergunakan seperlunya.",
+            20,
+            startY + 120
+          );
+
+          // Tanda Tangan
+          doc.text("Ponre, " + data.tanggal, 130, startY + 140);
+          doc.text(
+            "An. KEPALA KEPOLISIAN SEKTOR GANTARANG",
+            105,
+            startY + 150,
+            null,
+            null,
+            "center"
+          );
+          doc.text(
+            "BANIT INTELKAM POLSEK GANTARANG",
+            105,
+            startY + 155,
+            null,
+            null,
+            "center"
+          );
+
+          // Space untuk tanda tangan
+          doc.text("HASRUAL", 130, startY + 175);
+          doc.text("BRIGPOL NRP 93040701", 130, startY + 180);
+
+          // Catatan kaki
+          doc.setFontSize(9);
+          doc.text("CATATAN", 20, startY + 195);
+          doc.text("(Coret yang tidak perlu)", 20, startY + 200);
+
+          // Simpan PDF
+          doc.save(
+            "REKOMENDASI_CATATAN_KRIMINAL_" +
+              data.nama.replace(" ", "_") +
+              ".pdf"
+          );
+        });
+    </script>
+
+    <!-- library jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+      // Inisialisasi jsPDF
+      const { jsPDF } = window.jspdf;
+    </script>
+
+    <script>
+      // Set current date
+      document.getElementById("verificationDate").value =
+        new Date().toLocaleDateString("id-ID", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+
+      // Document upload handling
+      const documentUpload = document.createElement("input");
+      documentUpload.type = "file";
+      documentUpload.accept = ".pdf";
+      documentUpload.classList.add("d-none");
+
+      documentUpload.addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        if (file) {
+          if (file.size > 5 * 1024 * 1024) {
+            alert("Ukuran file terlalu besar. Maksimal 5MB");
+            return;
+          }
+
+          document.getElementById("documentName").textContent = file.name;
+          document.getElementById("documentUploadArea").classList.add("d-none");
+          document.getElementById("documentPreview").classList.remove("d-none");
+          document.getElementById("verifyButton").disabled = false;
+
+          // Store the file for later use
+          window.currentUploadedDoc = file;
+        }
+      });
+
+      // Setup event listeners
+      document
+        .querySelector("#documentUploadArea button")
+        .addEventListener("click", () => documentUpload.click());
+      document
+        .getElementById("removeDocument")
+        .addEventListener("click", function () {
+          document
+            .getElementById("documentUploadArea")
+            .classList.remove("d-none");
+          document.getElementById("documentPreview").classList.add("d-none");
+          document.getElementById("verifyButton").disabled = true;
+          documentUpload.value = "";
+          delete window.currentUploadedDoc;
+        });
+
+      // Preview document
+      document
+        .querySelector("#documentPreview button.btn-outline-secondary")
+        .addEventListener("click", function () {
+          const file = window.currentUploadedDoc;
+          if (file) {
+            const pdfViewer = document.getElementById("pdfFrame");
+            pdfViewer.src = URL.createObjectURL(file);
+            new bootstrap.Modal(
+              document.getElementById("pdfPreviewModal")
+            ).show();
+          }
+        });
+
+      // Download final doc
+      document
+        .getElementById("downloadFinalDoc")
+        .addEventListener("click", function () {
+          const file = window.currentUploadedDoc;
+          if (file) {
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(file);
+            a.download = file.name;
+            a.click();
+          }
+        });
+    </script>
   </body>
 </html>

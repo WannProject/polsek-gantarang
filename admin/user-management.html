@@ -239,66 +239,17 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- Kapolsek -->
-                    <tr>
-                      <td>1</td>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <img
-                            src="../assets/img/kapolsek-avatar.png"
-                            alt="Kapolsek"
-                            class="rounded-circle me-2"
-                            width="32"
-                            height="32"
-                          />
-                          <div>
-                            <div class="fw-bold">
-                              AKP. Muhammad Ridwan, S.H.
-                            </div>
-                            <div class="small text-muted">Kapolsek</div>
-                          </div>
-                        </div>
-                      </td>
-                      <td>197805102000121001</td>
-                      <td>Kapolsek Gantarang</td>
-                      <td><span class="badge bg-danger">Kapolsek</span></td>
-                      <td><span class="badge bg-success">Aktif</span></td>
-                      <td>
-                        <button
-                          class="btn btn-sm btn-outline-primary me-1"
-                          title="Edit"
-                          data-bs-toggle="modal"
-                          data-bs-target="#editPenggunaModal"
-                        >
-                          <i class="bi bi-pencil"></i>
-                        </button>
-                        <button
-                          class="btn btn-sm btn-outline-secondary me-1"
-                          title="Reset Password"
-                        >
-                          <i class="bi bi-key"></i>
-                        </button>
-                        <button
-                          class="btn btn-sm btn-outline-danger"
-                          title="Nonaktifkan"
-                        >
-                          <i class="bi bi-person-x"></i>
-                        </button>
-                      </td>
-                    </tr>
-
                     <!-- Petugas -->
                     <tr>
-                      <td>3</td>
+                      <td>2</td>
                       <td>
                         <div class="d-flex align-items-center">
-                          <img
-                            src="../assets/img/petugas-avatar.png"
-                            alt="Petugas"
-                            class="rounded-circle me-2"
-                            width="32"
-                            height="32"
-                          />
+                          <div
+                            class="bg-info rounded-circle d-flex align-items-center justify-content-center me-2"
+                            style="width: 32px; height: 32px"
+                          >
+                            <i class="bi bi-person-fill text-white"></i>
+                          </div>
                           <div>
                             <div class="fw-bold">Brigpol. Andi Saputra</div>
                             <div class="small text-muted">Petugas</div>
@@ -319,6 +270,7 @@
                         <button
                           class="btn btn-sm btn-outline-secondary me-1"
                           title="Reset Password"
+                          onclick="openResetPasswordModal('Brigpol. Andi Saputra', '198912052010011002')"
                         >
                           <i class="bi bi-key"></i>
                         </button>
@@ -333,16 +285,15 @@
 
                     <!-- Petugas Nonaktif -->
                     <tr>
-                      <td>4</td>
+                      <td>3</td>
                       <td>
                         <div class="d-flex align-items-center">
-                          <img
-                            src="../assets/img/petugas2-avatar.png"
-                            alt="Petugas"
-                            class="rounded-circle me-2"
-                            width="32"
-                            height="32"
-                          />
+                          <div
+                            class="bg-secondary rounded-circle d-flex align-items-center justify-content-center me-2"
+                            style="width: 32px; height: 32px"
+                          >
+                            <i class="bi bi-person-fill text-white"></i>
+                          </div>
                           <div>
                             <div class="fw-bold">Aipda. Rina Wijaya</div>
                             <div class="small text-muted">
@@ -365,6 +316,7 @@
                         <button
                           class="btn btn-sm btn-outline-secondary me-1"
                           title="Reset Password"
+                          onclick="openResetPasswordModal('Aipda. Rina Wijaya', '199003152012022001')"
                         >
                           <i class="bi bi-key"></i>
                         </button>
@@ -485,7 +437,6 @@
                   <label class="form-label">Role</label>
                   <select class="form-select" id="userRole" required>
                     <option value="">Pilih Role</option>
-                    <option value="kapolsek">Kapolsek</option>
                     <option value="petugas">Petugas</option>
                   </select>
                 </div>
@@ -679,6 +630,155 @@ Jl. Poros Makassar-Bulukumba KM. 120, Kel. Gantarang, Kec. Gantarang, Kab. Buluk
       </div>
     </div>
 
+    <!-- Reset Password Modal -->
+    <div
+      class="modal fade"
+      id="resetPasswordModal"
+      tabindex="-1"
+      aria-labelledby="resetPasswordModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="resetPasswordModalLabel">
+              <i class="bi bi-key me-2"></i>Reset Password Pengguna
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div
+              class="alert alert-info d-flex align-items-center"
+              role="alert"
+            >
+              <i class="bi bi-info-circle me-2"></i>
+              <div>
+                Reset password untuk pengguna:
+                <strong id="resetUserName"></strong> <br /><small
+                  class="text-muted"
+                  >NIP: <span id="resetUserNIP"></span
+                ></small>
+              </div>
+            </div>
+
+            <form id="resetPasswordForm">
+              <div class="mb-3">
+                <div class="form-floating">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="newPassword"
+                    placeholder="Password Baru"
+                    required
+                  />
+                  <label for="newPassword">Password Baru</label>
+                </div>
+                <div class="password-strength mt-2">
+                  <div
+                    class="password-strength-bar"
+                    id="passwordStrength"
+                  ></div>
+                </div>
+                <div class="form-text" id="passwordStrengthText">
+                  Password harus minimal 8 karakter dengan kombinasi huruf,
+                  angka, dan simbol
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="form-floating">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="confirmPassword"
+                    placeholder="Konfirmasi Password"
+                    required
+                  />
+                  <label for="confirmPassword">Konfirmasi Password Baru</label>
+                </div>
+                <div class="invalid-feedback" id="confirmPasswordFeedback">
+                  Password tidak cocok
+                </div>
+              </div>
+
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="requireChangePassword"
+                />
+                <label class="form-check-label" for="requireChangePassword">
+                  Wajib ubah password saat login pertama
+                </label>
+              </div>
+
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="sendNotification"
+                />
+                <label class="form-check-label" for="sendNotification">
+                  Kirim notifikasi email ke pengguna
+                </label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              <i class="bi bi-x-circle me-1"></i>Batal
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="resetPassword()"
+            >
+              <i class="bi bi-check-circle me-1"></i>Reset Password
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div
+      class="modal fade"
+      id="successModal"
+      tabindex="-1"
+      aria-labelledby="successModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-body text-center py-4">
+            <div class="text-success mb-3">
+              <i class="bi bi-check-circle-fill" style="font-size: 3rem"></i>
+            </div>
+            <h5 class="mb-2">Password Berhasil Direset!</h5>
+            <p class="text-muted mb-3">
+              Password pengguna telah berhasil diperbarui.
+            </p>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
@@ -709,6 +809,192 @@ Jl. Poros Makassar-Bulukumba KM. 120, Kel. Gantarang, Kec. Gantarang, Kab. Buluk
             modal.hide();
           });
       });
+    </script>
+
+    <!-- SIMULASI logika modal reset password -->
+    <script>
+      // Variables untuk menyimpan data modal
+      let currentUserData = {};
+
+      // Function untuk membuka modal reset password
+      function openResetPasswordModal(userName, userNIP) {
+        currentUserData = {
+          name: userName,
+          nip: userNIP,
+        };
+
+        document.getElementById("resetUserName").textContent = userName;
+        document.getElementById("resetUserNIP").textContent = userNIP;
+
+        // Reset form
+        document.getElementById("resetPasswordForm").reset();
+        document
+          .getElementById("newPassword")
+          .classList.remove("is-invalid", "is-valid");
+        document
+          .getElementById("confirmPassword")
+          .classList.remove("is-invalid", "is-valid");
+        document.getElementById("passwordStrength").style.width = "0%";
+        document.getElementById("passwordStrengthText").textContent =
+          "Password harus minimal 8 karakter dengan kombinasi huruf, angka, dan simbol";
+
+        // Tampilkan modal
+        const modal = new bootstrap.Modal(
+          document.getElementById("resetPasswordModal")
+        );
+        modal.show();
+      }
+
+      // Function untuk mengecek kekuatan password
+      function checkPasswordStrength(password) {
+        let strength = 0;
+        let feedback = "";
+
+        if (password.length >= 8) strength += 20;
+        if (password.match(/[a-z]/)) strength += 20;
+        if (password.match(/[A-Z]/)) strength += 20;
+        if (password.match(/[0-9]/)) strength += 20;
+        if (password.match(/[^a-zA-Z0-9]/)) strength += 20;
+
+        const strengthBar = document.getElementById("passwordStrength");
+        const strengthText = document.getElementById("passwordStrengthText");
+
+        if (strength < 40) {
+          strengthBar.className = "password-strength-bar strength-weak";
+          feedback =
+            "Password lemah - gunakan kombinasi huruf besar, kecil, angka, dan simbol";
+        } else if (strength < 80) {
+          strengthBar.className = "password-strength-bar strength-medium";
+          feedback =
+            "Password sedang - tambahkan lebih banyak variasi karakter";
+        } else {
+          strengthBar.className = "password-strength-bar strength-strong";
+          feedback = "Password kuat";
+        }
+
+        strengthBar.style.width = strength + "%";
+        strengthText.textContent = feedback;
+
+        return strength;
+      }
+
+      // Event listeners untuk validasi password
+      document
+        .getElementById("newPassword")
+        .addEventListener("input", function () {
+          const password = this.value;
+          const strength = checkPasswordStrength(password);
+
+          if (password.length > 0) {
+            if (strength >= 60) {
+              this.classList.remove("is-invalid");
+              this.classList.add("is-valid");
+            } else {
+              this.classList.remove("is-valid");
+              this.classList.add("is-invalid");
+            }
+          } else {
+            this.classList.remove("is-invalid", "is-valid");
+          }
+
+          // Check confirm password jika sudah diisi
+          const confirmPassword = document.getElementById("confirmPassword");
+          if (confirmPassword.value.length > 0) {
+            validateConfirmPassword();
+          }
+        });
+
+      document
+        .getElementById("confirmPassword")
+        .addEventListener("input", validateConfirmPassword);
+
+      function validateConfirmPassword() {
+        const password = document.getElementById("newPassword").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+
+        if (confirmPassword.length > 0) {
+          if (password === confirmPassword) {
+            confirmPasswordInput.classList.remove("is-invalid");
+            confirmPasswordInput.classList.add("is-valid");
+          } else {
+            confirmPasswordInput.classList.remove("is-valid");
+            confirmPasswordInput.classList.add("is-invalid");
+          }
+        } else {
+          confirmPasswordInput.classList.remove("is-invalid", "is-valid");
+        }
+      }
+
+      // Function untuk reset password
+      function resetPassword() {
+        const password = document.getElementById("newPassword").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        const requireChange = document.getElementById(
+          "requireChangePassword"
+        ).checked;
+        const sendNotification =
+          document.getElementById("sendNotification").checked;
+
+        // Validasi
+        if (!password || !confirmPassword) {
+          alert("Harap isi semua field password!");
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          alert("Password dan konfirmasi password tidak cocok!");
+          return;
+        }
+
+        if (checkPasswordStrength(password) < 60) {
+          alert(
+            "Password terlalu lemah! Gunakan kombinasi huruf besar, kecil, angka, dan simbol."
+          );
+          return;
+        }
+
+        // Simulasi proses reset password
+        const resetButton = event.target;
+        const originalText = resetButton.innerHTML;
+
+        resetButton.disabled = true;
+        resetButton.innerHTML =
+          '<i class="bi bi-hourglass-split me-1"></i>Memproses...';
+
+        setTimeout(() => {
+          // Tutup modal reset password
+          bootstrap.Modal.getInstance(
+            document.getElementById("resetPasswordModal")
+          ).hide();
+
+          // Tampilkan modal sukses
+          const successModal = new bootstrap.Modal(
+            document.getElementById("successModal")
+          );
+          successModal.show();
+
+          // Reset button
+          resetButton.disabled = false;
+          resetButton.innerHTML = originalText;
+
+          console.log("Password reset untuk:", currentUserData);
+          console.log("Require change on first login:", requireChange);
+          console.log("Send notification:", sendNotification);
+        }, 1500);
+      }
+
+      // Event listener untuk enter key pada form
+      document
+        .getElementById("resetPasswordForm")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            resetPassword();
+          }
+        });
     </script>
   </body>
 </html>

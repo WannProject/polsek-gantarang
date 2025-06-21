@@ -18,6 +18,59 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- Favicon -->
     <link rel="icon" href="../assets/img/favicon.ico" />
+
+    <!-- manual css -->
+    <style>
+      /* Timeline Style */
+      .timeline {
+        position: relative;
+        padding-left: 20px;
+      }
+      .timeline-item {
+        position: relative;
+        padding-bottom: 20px;
+      }
+      .timeline-badge {
+        position: absolute;
+        left: -20px;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        z-index: 1;
+      }
+      .timeline-content {
+        padding-left: 10px;
+      }
+      .timeline-item:not(:last-child)::before {
+        content: "";
+        position: absolute;
+        left: -13px;
+        top: 16px;
+        bottom: 0;
+        width: 2px;
+        background-color: #e9ecef;
+      }
+
+      /* Dokumen Thumbnail Style */
+      .document-thumbnail {
+        position: relative;
+        width: 120px;
+        text-align: center;
+      }
+      .document-thumbnail .img-thumbnail {
+        width: 100%;
+        height: 80px;
+        object-fit: cover;
+      }
+      .document-name {
+        display: block;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
   </head>
   <body class="dashboard-page">
     <div class="dashboard-wrapper">
@@ -177,86 +230,6 @@
 
         <!-- Page Content -->
         <div class="container-fluid">
-          <!-- Status Overview -->
-          <div class="row mb-4">
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-start-primary h-100 py-2">
-                <div class="card-body">
-                  <div class="row align-items-center">
-                    <div class="col">
-                      <div
-                        class="text-xs fw-bold text-primary text-uppercase mb-1"
-                      >
-                        Total Pengajuan
-                      </div>
-                      <div class="h5 mb-0 fw-bold text-gray-800">6</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="bi bi-file-earmark-text text-gray-300 fs-1"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-start-warning h-100 py-2">
-                <div class="card-body">
-                  <div class="row align-items-center">
-                    <div class="col">
-                      <div
-                        class="text-xs fw-bold text-warning text-uppercase mb-1"
-                      >
-                        Menunggu Verifikasi
-                      </div>
-                      <div class="h5 mb-0 fw-bold text-gray-800">1</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="bi bi-hourglass-split text-gray-300 fs-1"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-start-info h-100 py-2">
-                <div class="card-body">
-                  <div class="row align-items-center">
-                    <div class="col">
-                      <div
-                        class="text-xs fw-bold text-info text-uppercase mb-1"
-                      >
-                        Dalam Proses
-                      </div>
-                      <div class="h5 mb-0 fw-bold text-gray-800">1</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="bi bi-gear text-gray-300 fs-1"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-start-success h-100 py-2">
-                <div class="card-body">
-                  <div class="row align-items-center">
-                    <div class="col">
-                      <div
-                        class="text-xs fw-bold text-success text-uppercase mb-1"
-                      >
-                        Selesai
-                      </div>
-                      <div class="h5 mb-0 fw-bold text-gray-800">4</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="bi bi-check-circle text-gray-300 fs-1"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <!-- Application List -->
           <div class="card">
             <div
@@ -598,56 +571,5 @@
         });
       });
     </script>
-    <style>
-      /* Timeline Style */
-      .timeline {
-        position: relative;
-        padding-left: 20px;
-      }
-      .timeline-item {
-        position: relative;
-        padding-bottom: 20px;
-      }
-      .timeline-badge {
-        position: absolute;
-        left: -20px;
-        top: 0;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        z-index: 1;
-      }
-      .timeline-content {
-        padding-left: 10px;
-      }
-      .timeline-item:not(:last-child)::before {
-        content: "";
-        position: absolute;
-        left: -13px;
-        top: 16px;
-        bottom: 0;
-        width: 2px;
-        background-color: #e9ecef;
-      }
-
-      /* Dokumen Thumbnail Style */
-      .document-thumbnail {
-        position: relative;
-        width: 120px;
-        text-align: center;
-      }
-      .document-thumbnail .img-thumbnail {
-        width: 100%;
-        height: 80px;
-        object-fit: cover;
-      }
-      .document-name {
-        display: block;
-        font-size: 12px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    </style>
   </body>
 </html>
